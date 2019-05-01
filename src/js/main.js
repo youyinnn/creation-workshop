@@ -15,6 +15,18 @@ function show_panel(panel) {
     rmclass(panel[0], 'hidepanel')
 }
 
+function show_login_form() {
+    adclass($('#loginbox')[0], 'loginformshow')
+    setTimeout(() => {
+        $('#loginform').css('opacity', '1')
+    }, 300);
+}
+
+function hide_login_form() {
+    rmclass($('#loginbox')[0], 'loginformshow')
+    $('#loginform').css('opacity', '0')
+}
+
 // bottom bar function
 function active_bottom_bar_btn(btn) {
     if (btn !== nowactivebtn) {

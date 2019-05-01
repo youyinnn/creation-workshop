@@ -39,15 +39,15 @@ function login(username, password) {
         if (user.username === username) {
             if (user.password === password) {
                 // login success
-                return 1
+                return user.id
             } else {
                 // wrong password
-                return 0
+                return -1
             }
         }
     }
     // no such user
-    return 2
+    return -2
 }
 
 function sign_in(un,  em, pw1, pw2) {

@@ -38,14 +38,16 @@ form .fa-times {
 }
 
 #loginbox {
+  transition: 1s all;
   width: 300px;
-  height: 320px;
+  height: 63px;
   position: absolute;
   margin: auto;
   left: 0;
   right: 0;
   top: 0;
   bottom: 0;
+  overflow: hidden;
 }
 
 #loginbox label{
@@ -57,6 +59,14 @@ form .fa-times {
 #signinsubmit,
 #signinreturn {
   width: 300px;
+}
+
+.loginformshow{
+  height: 340px !important;
+}
+
+#loginform{
+  opacity: 0;
 }
 
 /* signin panel */

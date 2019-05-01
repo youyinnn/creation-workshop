@@ -4,12 +4,18 @@ $(function() {
         active_bottom_bar_btn($(this))
     })
     $('#chatbtn').click(function() {
+        hide_leftbtn()
+        need_right_function('plus-square-o', function () {
+            console.log('add')
+        })
         console.log('to chat')
     })
     $('#contextbtn').click(function() {
         console.log('to contect')
     })
     $('#mebtn').click(function() {
+        hide_leftbtn()
+        hide_rightbtn()
         console.log('to me')
     })
 
@@ -18,14 +24,15 @@ $(function() {
     formValidHandle($('#loginform'))
     formSubmitEventBind('#loginform', function(arr) {
         let rs = login($('#username')[0].value, $('#password')[0].value)
-        if (rs === 1) {
+        if (rs >= 0) {
+            localStorage.setItem('loginid', rs)
             popmsg('登陆成功')
             setTimeout(() => {
                 get_panel_up(mainpanel)
             }, 1000);
-        } else if (rs === 0) {
+        } else if (rs === -1) {
             popmsg('密码错误')
-        } else if (rs === 2) {
+        } else if (rs === -2) {
             popmsg('用户不存在')
         }
         formVreset('#loginform')
