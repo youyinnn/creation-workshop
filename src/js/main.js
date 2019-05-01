@@ -27,6 +27,17 @@ function hide_login_form() {
     $('#loginform').css('opacity', '0')
 }
 
+function just_login() {
+    get_panel_up(mainpanel)
+    // manually animations
+    setTimeout(() => {
+        show_rightbtn()
+    }, 100);
+
+    // active btns
+    active_bottom_bar_btn (nowactivebtn)    
+}
+
 // bottom bar function
 function active_bottom_bar_btn(btn) {
     if (btn !== nowactivebtn) {
@@ -84,4 +95,13 @@ function need_right_function(logo, func) {
 function change_head_title(newtitle) {
     headtitle.animateCss('fadeIn')
     headtitle.text(newtitle)
+}
+
+// me panel function
+function logout() {
+    setTimeout(() => {
+        localStorage.removeItem('loginid')
+        get_panel_up(loginpanel)
+        show_login_form()
+    }, 1000);
 }

@@ -1,24 +1,32 @@
 $(function() {
     // bottom bar btn event
-    $('.bottombarbtnlogo').click(function() {
-        active_bottom_bar_btn($(this))
-    })
     $('#chatbtn').click(function() {
-        hide_leftbtn()
-        need_right_function('plus-square-o', function () {
-            console.log('add')
-        })
-        console.log('to chat')
+        if (!$('#chatbtn').hasClass('active')) {
+            hide_leftbtn()
+            need_right_function('plus-square-o', function () {
+                console.log('add')
+            })
+            console.log('to chat')
+        }
     })
     $('#contextbtn').click(function() {
-        console.log('to contect')
+        if (!$('#contextbtn').hasClass('active')) {
+            console.log('to contect')
+        }
     })
     $('#mebtn').click(function() {
-        hide_leftbtn()
-        hide_rightbtn()
-        console.log('to me')
+        if (!$('#mebtn').hasClass('active')) { 
+            hide_leftbtn()
+            hide_rightbtn()
+            console.log('to me')
+        }
     })
-
+    $('.bottombarbtnlogo').click(function() {
+        // should bind it after
+        active_bottom_bar_btn($(this))
+        return
+    })
+    
 
     // login panel event
     formValidHandle($('#loginform'))
@@ -28,7 +36,7 @@ $(function() {
             localStorage.setItem('loginid', rs)
             popmsg('登陆成功')
             setTimeout(() => {
-                get_panel_up(mainpanel)
+                just_login()
             }, 1000);
         } else if (rs === -1) {
             popmsg('密码错误')

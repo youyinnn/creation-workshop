@@ -19,7 +19,7 @@ var headtitle = $('#headtitle')
 // user login cache
 var loginid = localStorage.getItem('loginid')
 
-$(function () {
+$(function() {
     // animations
     botttombar.animateCss('fadeIn')
     headtitle.animateCss('fadeIn')
@@ -27,17 +27,10 @@ $(function () {
     if (loginid === null) {
         setTimeout(() => {
             show_login_form()
-        }, 700); 
+        }, 700);
     } else {
         setTimeout(() => {
-            get_panel_up(mainpanel)
-            // manually animations
-            setTimeout(() => {
-                show_rightbtn()
-            }, 100);
-        
-            // active btns
-            active_bottom_bar_btn (nowactivebtn)    
+            just_login()
         }, 1500);
     }
 
