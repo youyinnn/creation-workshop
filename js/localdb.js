@@ -29,7 +29,7 @@ var lcoaldb_usertb = {
 }
 
 $(function () {
-    if (localStorage['userdb'] === null) {
+    if (localStorage['userdb'] === undefined) {
         localStorage.setItem('userdb', JSON.stringify(lcoaldb_usertb))
     }
 })
