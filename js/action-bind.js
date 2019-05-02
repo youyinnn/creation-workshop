@@ -6,7 +6,6 @@ $(function() {
             need_right_function('plus-square-o', function() {
                 console.log('add')
             })
-            console.log('to chat')
             get_subpanel_up(chatsubpanel)
         }
     })
@@ -33,9 +32,10 @@ $(function() {
     // login panel event
     formValidHandle($('#loginform'))
     formSubmitEventBind('#loginform', function(arr) {
-        let rs = login($('#username')[0].value, $('#password')[0].value)
+        let rs = log_in($('#username')[0].value, $('#password')[0].value)
         if (rs >= 0) {
             localStorage.setItem('loginid', rs)
+            loginid = rs
             popmsg('登陆成功', 500)
             setTimeout(() => {
                 just_login()
@@ -91,11 +91,7 @@ $(function() {
 
     // chat list event
     $('.chatlistfunbtn').click(function() {
-        let p = $(this).parent()
-        let chatwith = p.attr('chatwith')
-        let chatid = p.attr('chatid')
-        let chatitem = $('[chatid = "' + chatid + '"]')
-        remove_chat_item(chatitem)
+        remove_chat_item(this)
     })
 
     // chat list item drag event

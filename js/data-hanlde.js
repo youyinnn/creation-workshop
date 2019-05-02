@@ -32,7 +32,7 @@ function del(dbname, id) {
 }
 
 // handle user db
-function login(username, password) {
+function log_in(username, password) {
     let db = sch('userdb')
     for (let i = 0; i < db.data.length; i++) {
         let user = db.data[i]
@@ -80,4 +80,50 @@ function update(id, nn, pw, e, i) {
         email: e,
         intro: i
     })
+}
+
+// handle relation db
+function get_friend(id) {
+    let fl = new Array()
+    let db = sch('uredb')
+    for (let i = 0; i < db.data.length; i++) {
+        let re = db.data[i]
+        if (re.uid === id) {
+            for (let j = 0; j < re.fs.length; j++ ) {
+                fl.push(sch('userdb', re.fs[j]))
+            }
+            return fl;
+        }
+    }
+    return fl
+}
+
+function get_someone_group_list(id) {
+    let gl = new Array()
+    let db = sch('gredb')
+    for (let i = 0; i < db.data.length; i++) {
+        let g = db.data[i]
+        for (let j = 0; j < g.mb.length; j++ ) {
+            if (g.mb[j] === id) {
+                gl.push(g)
+                break
+            }
+        }
+    }
+    return gl
+}
+
+function is_member(id, gid) {
+    let db = sch('gredb')
+    for (let i = 0; i < db.data.length; i++) {
+        let g = db.data[i]
+        if (g.gid + "" === gid + "") {
+            for (let j = 0; j < g.mb.length; j++ ) {
+                if (g.mb[j] + "" === id + "") {
+                    return true
+                }
+            }
+        }
+    }
+    return false
 }

@@ -35,6 +35,9 @@ var headtitle = $('#headtitle')
 // user login cache
 var loginid = localStorage.getItem('loginid')
 
+// user chat lisr cache
+// TODO
+
 $(function() {
     // animations
     botttombar.animateCss('fadeIn')

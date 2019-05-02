@@ -38,6 +38,7 @@ function show_panel(panel) {
 }
 
 function show_login_form() {
+    $('#loginbox').css('overflow', 'visible')
     adclass($('#loginbox')[0], 'loginformshow')
     setTimeout(() => {
         $('#loginform').css('opacity', '1')
@@ -61,6 +62,7 @@ function just_login() {
     active_bottom_bar_btn (chatbtn)
     
     reflesh_user_info()
+    fetch_chat_list()
 }
 
 function reflesh_user_info() {
@@ -142,20 +144,39 @@ function offset_item(item) {
     
 }
 
-function remove_chat_item(item) {
-    item.css('height', 0)
-    item.css('border-bottom-width', 0)
+function remove_chat_item(ts) {
+    let p = $(ts).parent()
+    let chatid = p.attr('chatid')
+    let chatwith = p.attr('chatwith')
+    let chatitem = $('[chatid = "' + chatid + '"][chatwith = "' + chatwith + '"]')
+    chatitem.css('height', 0)
+    chatitem.css('border-bottom-width', 0)
 }
 
-function add_chat_item(chatwith, chatid) {
-    
+function fetch_chat_list() {
+    $('#chatsubpanel').children().remove()
+    let logs = sch('chatlogdb')
+    for (let i = 0; i < logs.data.length; i++) {
+        let log = logs.data[i]
+        if (log.chatwith === 'u') {
+            if (log.aid + "" === loginid + "" || log.bid + "" === loginid + "") {
+                chat_list_item(log)
+            }
+        } else {
+            if (is_member(loginid, log.gid)) {
+                chat_list_item(log)
+            }
+        }
+    }
 }
 
 // me panel function
 function logout() {
+    console.log(123)
     popmsg('登出成功', 500)
     setTimeout(() => {
         localStorage.removeItem('loginid')
+        login = null
         get_panel_up(loginpanel)
         show_login_form()
     }, 1000);

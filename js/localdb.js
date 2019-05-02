@@ -40,15 +40,15 @@ var localdb_urelation = {
     data :[
         {
             uid: 0,
-            friend: [1,2]
+            fs: [1,2]
         },
         {
             uid: 1,
-            friend: [0]
+            fs: [0]
         },
         {
             uid: 2,
-            friend: [0]
+            fs: [0]
         }
     ]
 }
@@ -59,12 +59,12 @@ var localdb_grelation = {
         {
             gid: 0,
             gname: 'walkingdead',
-            member: [0,1,2]
+            mb: [0,1,2]
         },
         {
             gid: 1,
             gname: 'twins',
-            member: [0,2]
+            mb: [0,2]
         },
     ]
 }
@@ -75,25 +75,25 @@ var localdb_chatlogtb = {
             chatwith: 'u',
             aid: 0,
             bid: 1,
-            log: [
+            msglog: [
                 {
                     time: 1556779603137,
-                    msg: 'asdasdsad1dasdasd',
+                    msg: '你好，我是a',
                     from: 'a',
                 },
                 {
                     time: 1556780688914,
-                    msg: '1321323',
+                    msg: '你好，我是b',
                     from: 'b'
                 },
                 {
                     time: 1556780691691,
-                    msg: 'asdasdsad1dasdasd',
+                    msg: '你吃饭了嘛？',
                     from: 'a'
                 },
                 {
                     time: 1556780692230,
-                    msg: 'asdasdsad1dasdasd',
+                    msg: '要不一起啊？',
                     from: 'a'
                 }
             ]
@@ -101,25 +101,25 @@ var localdb_chatlogtb = {
         {
             chatwith: 'g',
             gid: 0, 
-            log: [
+            msglog: [
                 {
                     time: 1556780710837,
-                    msg: 'asdasdsad1dasdasd',
+                    msg: '有人吗？',
                     from: 1
                 },
                 {
                     time: 1556780711413,
-                    msg: '1321323',
+                    msg: '哈喽？',
                     from: 1
                 },
                 {
                     time: 1556780711860,
-                    msg: 'asdasdsad1dasdasd',
+                    msg: '有的有的',
                     from: 0
                 },
                 {
                     time: 1556780712859,
-                    msg: 'asdasdsad1dasdasd',
+                    msg: '什么事？',
                     from: 2
                 }
             ]
@@ -127,15 +127,15 @@ var localdb_chatlogtb = {
         {
             chatwith: 'g',
             gid: 1, 
-            log: [
+            msglog: [
                 {
                     time: 1556780711760,
-                    msg: 'asdasdsad1dasdasd',
+                    msg: '那个人真搞笑',
                     from: 0
                 },
                 {
                     time: 1556780718859,
-                    msg: 'asdasdsad1dasdasd',
+                    msg: '对啊',
                     from: 2
                 }
             ]
@@ -144,25 +144,25 @@ var localdb_chatlogtb = {
             chatwith: 'u',
             aid: 0,
             bid: 2,
-            log: [
+            msglog: [
                 {
                     time: 1556780731953,
-                    msg: 'asdasdsad1dasdasd',
+                    msg: '你好啊',
                     from: 'a'
                 },
                 {
                     time: 1556780733791,
-                    msg: '1321323',
+                    msg: '你好',
                     from: 'b'
                 },
                 {
                     time: 1556780734369,
-                    msg: 'asdasdsad1dasdasd',
+                    msg: '你觉得我的计划怎么样',
                     from: 'a'
                 },
                 {
                     time: 1556780735279,
-                    msg: 'asdasdsad1dasdasd',
+                    msg: '还有哪里需要改进的嘛？',
                     from: 'a'
                 }
             ]
@@ -170,6 +170,7 @@ var localdb_chatlogtb = {
     ]
 }
 
+var dbnamelist = new Array()
 $(function () {
     if (localStorage['userdb'] === undefined) {
         localStorage.setItem('userdb', JSON.stringify(lcoaldb_usertb))
@@ -184,3 +185,11 @@ $(function () {
         localStorage.setItem('gredb', JSON.stringify(localdb_grelation))
     }
 })
+
+function resetdb() {
+    localStorage.removeItem('userdb')
+    localStorage.removeItem('chatlogdb')
+    localStorage.removeItem('uredb')
+    localStorage.removeItem('gredb')
+    location.reload()
+}
