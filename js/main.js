@@ -137,6 +137,20 @@ function change_head_title(newtitle) {
     headtitle.text(newtitle)
 }
 
+// chat panel function
+function offset_item(item) {
+    
+}
+
+function remove_chat_item(item) {
+    item.css('height', 0)
+    item.css('border-bottom-width', 0)
+}
+
+function add_chat_item(chatwith, chatid) {
+    
+}
+
 // me panel function
 function logout() {
     popmsg('登出成功', 500)

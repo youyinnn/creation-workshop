@@ -122,11 +122,11 @@ form .fa-times {
   height: 8%;
   width: 50px;
   /* background-color: #fff; */
+  cursor: pointer;
 
   display: flex;
   justify-content: center;
   align-items: Center;
-  cursor: pointer;
 }
 
 #headrightbtn {
@@ -155,6 +155,72 @@ form .fa-times {
   position: absolute;
   width: 100%;
   height: 100%;
+}
+
+#chatsubpanel {
+  overflow: auto;
+}
+
+#chatsubpanel::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+}
+
+/* chatsubpanel */
+.chatlistitem {
+  width: 100%;
+  height: 60px;
+  border-bottom: #92929242 solid 1px;
+  cursor: pointer;
+
+  overflow: hidden;
+}
+
+.chatlistfunbtn {
+  width: 10%;
+  height: 60px;
+  float: right;
+  background-color: #b3b1b142;
+
+  display: flex;
+  justify-content: center;
+  align-items: Center;
+}
+
+.chatlistfunbtn:hover {
+  background-color: #6968687a;
+}
+
+.chatlistitemcontent:hover {
+  background-color: rgb(226, 226, 226);
+}
+
+.chatlistitemcontent {
+  float: left;
+  width: 100%;
+  height: 60px;
+  padding: 0 1rem;
+  position: relative;
+
+  left: 0;
+  transition: .3s all;
+}
+
+.chatlistitemcontextmove {
+  left: -100px;
+}
+
+.chatlistitemhead span,
+.chatlistitembody span {
+  line-height: 30px;
+}
+
+.chatlistitembody span {
+  font-weight: 100;
+}
+
+.chatlistitemhead span {
+  font-weight: bold;
 }
 
 /* mesubpanel */
