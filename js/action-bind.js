@@ -99,25 +99,25 @@ $(function() {
     })
 
     // chat list item drag event
-    $('.chatlistitem').mousedown(function(e) {
-        if (event.button == 0) {
-            let obj = $(this)
-            if (obj.attr('cx') === undefined) {
-                obj.attr('cx', e.clientX)
-            }
-        }
-        return false;
-    })
-    $('.chatlistitem').mouseup(function(e) {
-        if (event.button == 0) {
-            let obj = $(this)
-            if (obj.attr('cx') !== undefined) {
-                if (e.clientX - obj.attr('cx') < 0) {
-                    $(this).find('.chatlistitemcontent').addClass('chatlistitemcontextmove')
-                }
-                obj.removeAttr('cx')
-            }
-        }
-        return false;
-    })
+    // $('.chatlistitem').mousedown(function(e) {
+    //     if (event.button == 0) {
+    //         let obj = $(this)
+    //         if (obj.attr('cx') === undefined) {
+    //             obj.attr('cx', e.clientX)
+    //         }
+    //     }
+    //     return false;
+    // })
+    // $('.chatlistitem').mouseup(function(e) {
+    //     if (event.button == 0) {
+    //         let obj = $(this)
+    //         if (obj.attr('cx') !== undefined) {
+    //             if (e.clientX - obj.attr('cx') < 0) {
+    //                 $(this).find('.chatlistitemcontent').addClass('chatlistitemcontextmove')
+    //             }
+    //             obj.removeAttr('cx')
+    //         }
+    //     }
+    //     return false;
+    // })
 })
