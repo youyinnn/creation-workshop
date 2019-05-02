@@ -4,6 +4,17 @@ var loginpanel = $('#loginpanel')
 var signinpanel = $('#signinpanel')
 var nowpanel = loginpanel
 
+// subpanel
+var chatsubpanel = $('#chatsubpanel')
+var groupsubpanel = $('#groupsubpanel')
+var mesubpanel = $('#mesubpanel')
+var nowsubpanel = chatsubpanel
+
+// person info subpanel
+var infosubpanel = $('#infosubpanel')
+var infoupdsubpanel = $('#infoupdsubpanel')
+var nowinfosubpanel = infosubpanel
+
 // bottom bar btn
 var chatbtn = $('#chatbtn')
 var contextbtn = $('#contextbtn')

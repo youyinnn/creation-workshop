@@ -59,7 +59,7 @@
                     <label for="newpassword1">密&nbsp;&nbsp;码</label>
                     <i class="fa fa-check" aria-hidden="true" input-va="newpassword1"></i>
                     <i class="fa fa-times" aria-hidden="true" input-va="newpassword1"></i>
-                    <input name="newpassword1" type="password" class="form-control" id="newpassword1" notnull minlength="1" maxlength="15" mute="fasle" autocomplete="off" >
+                    <input name="newpassword1" type="password" class="form-control" id="newpassword1" notnull minlength="1" maxlength="15" mute="fasle" autocomplete="off">
                 </div>
                 <div class="form-group">
                     <label for="newpassword2">确&nbsp;认&nbsp;密&nbsp;码</label>
@@ -78,7 +78,7 @@
             <div id="headleftbtn" class="headbtn">
                 <i class="fa fa-angle-left fa-2x functionbtn"></i>
             </div>
-            <span id="headtitle">Workshop</span>
+            <span id="headtitle">创意工坊</span>
             <div id="headrightbtn" class="headbtn">
                 <i class="fa fa-plus-square-o fa-2x functionbtn"></i>
             </div>
@@ -86,6 +86,72 @@
 
         <div id="container">
 
+            <div id="chatsubpanel" class="subpanel">
+
+            </div>
+
+            <div id="groupsubpanel" class="subpanel hidepanel">
+
+            </div>
+
+            <div id="mesubpanel" class="subpanel hidepanel">
+                <div id="persioninfobox">
+                    <form id="infosubpanel" class="subpanel unselectable">
+                        <h5>个人信息</h5>
+                        <div class="form-group">
+                            <label for="infousername">账号</label>
+                            <input id="infousername" type="text" class="form-control" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="infousername">昵称</label>
+                            <input id="infonickname" type="text" class="form-control" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="infousername">邮箱</label>
+                            <input id="infoemail" type="text" class="form-control" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="infousername">个人简介</label>
+                            <textarea id="infointro" type="text" class="form-control" disabled></textarea>
+                        </div>
+                        <button type="button" class="infoupdbtn btn btn-dark" onclick="get_infosubpanel_up(infoupdsubpanel)">修改</button>
+                    </form>
+                    <form id="infoupdsubpanel" class="subpanel unselectable hidepanel">
+                        <h5>修改信息</h5>
+                        <div class="form-group">
+                            <label for="newinfonickname">昵称</label>
+                            <i class="fa fa-check" aria-hidden="true" input-va="newinfonickname"></i>
+                            <i class="fa fa-times" aria-hidden="true" input-va="newinfonickname"></i>
+                            <input name="newinfonickname" id="newinfonickname" type="text" class="form-control" autocomplete="off" pt="^([A-Z]|[a-z]|[0-9]){8,16}$" unvmsg="请输入8-16位纯大小写字母或者数字" notnull minlength="8" maxlength="16">
+                        </div>
+                        <div class="form-group">
+                            <label for="newinfopassword">密码</label>
+                            <i class="fa fa-check" aria-hidden="true" input-va="newinfopassword"></i>
+                            <i class="fa fa-times" aria-hidden="true" input-va="newinfopassword"></i>
+                            <input name="newinfopassword" id="newinfopassword" type="password" class="form-control" notnull minlength="1" maxlength="15" mute="fasle" autocomplete="off">
+                        </div>
+                        <div class="form-group">
+                            <label for="newinfoemail">邮箱</label>
+                            <i class="fa fa-check" aria-hidden="true" input-va="newinfoemail"></i>
+                            <i class="fa fa-times" aria-hidden="true" input-va="newinfoemail"></i>
+                            <input name="newinfoemail" id="newinfoemail" type="email" class="form-control" autocomplete="off" pt="(\d|\w)+@(\d|\w)+\.(\d|\w)+" unvmsg="请输入正确的邮箱格式" maxlength="30">
+                        </div>
+                        <div class="form-group">
+                            <label for="newinfointro">个人简介</label>
+                            <textarea name="newinfointro" id="newinfointro" type="text" class="form-control" maxlength="60"></textarea>
+                        </div>
+                        <div class="infoupdbtn btn-group" role="group" aria-label="Basic example">
+                            <button type="button" class="btn btn-secondary" onclick="get_infosubpanel_up(infosubpanel);formVreset('#infoupdsubpanel')">返回</button>
+                            <button type="submit" class="btn btn-success">提交</button>
+                        </div>
+                    </form>
+                </div>
+                <div id="mefuncbox" class="btn-group" role="group" aria-label="Basic example">
+                    <button id="todobtn" type="button" class="mefunbtn btn btn-success">待办</button>
+                    <button id="ideabtn" type="button" class="mefunbtn btn btn-primary">点子</button>
+                    <button id="logoutbtn" type="button" class="mefunbtn btn btn-danger" onclick="logout()">登出</button>
+                </div>
+            </div>
         </div>
 
         <div id="botttombar">
@@ -93,21 +159,21 @@
                 <div id="chatbtn" class="bottombarbtnlogo functionbtn">
                     <i class="fa fa-comments"></i>
                     <br>
-                    Chats
+                    聊天
                 </div>
             </div>
             <div id="contectbtnbox" class="bottombarbtn">
                 <div id="contextbtn" class="bottombarbtnlogo functionbtn">
                     <i class="fa fa-group"></i>
                     <br>
-                    Contects
+                    通讯录
                 </div>
             </div>
             <div id="mebtnbox" class="bottombarbtn">
                 <div id="mebtn" class="bottombarbtnlogo functionbtn">
                     <i class="fa fa-user"></i>
                     <br>
-                    Me
+                    我
                 </div>
             </div>
         </div>

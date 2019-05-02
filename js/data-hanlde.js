@@ -72,3 +72,12 @@ function sign_in(un,  em, pw1, pw2) {
         return 0
     }
 }
+
+function update(id, nn, pw, e, i) {
+    upd('userdb', id, {
+        nickname: nn,
+        password: pw,
+        email: e,
+        intro: i
+    })
+}

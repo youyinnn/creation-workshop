@@ -3,22 +3,24 @@ $(function() {
     $('#chatbtn').click(function() {
         if (!$('#chatbtn').hasClass('active')) {
             hide_leftbtn()
-            need_right_function('plus-square-o', function () {
+            need_right_function('plus-square-o', function() {
                 console.log('add')
             })
             console.log('to chat')
+            get_subpanel_up(chatsubpanel)
         }
     })
     $('#contextbtn').click(function() {
         if (!$('#contextbtn').hasClass('active')) {
             console.log('to contect')
+            get_subpanel_up(groupsubpanel)
         }
     })
     $('#mebtn').click(function() {
-        if (!$('#mebtn').hasClass('active')) { 
+        if (!$('#mebtn').hasClass('active')) {
             hide_leftbtn()
             hide_rightbtn()
-            console.log('to me')
+            get_subpanel_up(mesubpanel)
         }
     })
     $('.bottombarbtnlogo').click(function() {
@@ -26,7 +28,7 @@ $(function() {
         active_bottom_bar_btn($(this))
         return
     })
-    
+
 
     // login panel event
     formValidHandle($('#loginform'))
@@ -34,7 +36,7 @@ $(function() {
         let rs = login($('#username')[0].value, $('#password')[0].value)
         if (rs >= 0) {
             localStorage.setItem('loginid', rs)
-            popmsg('登陆成功')
+            popmsg('登陆成功', 500)
             setTimeout(() => {
                 just_login()
             }, 1000);
@@ -61,7 +63,7 @@ $(function() {
             $('#newpassword2')[0].value
         )
         if (rs === 1) {
-            popmsg('注册成功')
+            popmsg('注册成功', 500)
             setTimeout(() => {
                 get_panel_up(mainpanel)
             }, 1000);
@@ -75,6 +77,16 @@ $(function() {
     $('#signinreturn').click(function() {
         get_panel_up(loginpanel)
         formVreset('#signinform')
+    })
+
+    // infoupd form event
+    formValidHandle($('#infoupdsubpanel'))
+    formSubmitEventBind('#infoupdsubpanel', function(arr) {
+        update(loginid, arr[0].value, arr[1].value, arr[2].value, arr[3].value)
+        reflesh_user_info()
+        setTimeout(() => {
+            get_infosubpanel_up(infosubpanel)
+        }, 1000);
     })
 
 })

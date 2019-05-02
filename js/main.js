@@ -7,6 +7,22 @@ function get_panel_up(panel) {
     }
 }
 
+function get_subpanel_up(subpanel) {
+    if (nowsubpanel !== subpanel) {
+        hide_panel(nowsubpanel)
+        show_panel(subpanel)
+        nowsubpanel = subpanel
+    }
+}
+
+function get_infosubpanel_up(infosubpanel) {
+    if (nowinfosubpanel !== infosubpanel) {
+        hide_panel(nowinfosubpanel)
+        show_panel(infosubpanel)
+        nowinfosubpanel = infosubpanel
+    }
+}
+
 function hide_panel(panel) {
     adclass(panel[0], 'hidepanel')
 }
@@ -29,13 +45,31 @@ function hide_login_form() {
 
 function just_login() {
     get_panel_up(mainpanel)
+    get_subpanel_up(chatsubpanel)
     // manually animations
     setTimeout(() => {
         show_rightbtn()
     }, 100);
 
     // active btns
-    active_bottom_bar_btn (nowactivebtn)    
+    active_bottom_bar_btn (chatbtn)
+    
+    reflesh_user_info()
+}
+
+function reflesh_user_info() {
+    let user = sch('userdb', loginid)
+    $('#infousername').val(user.username)
+    $('#infonickname').val(user.nickname)
+    $('#infoemail').val(user.email)
+    $('#infointro').val(user.intro)
+
+    $('#newinfonickname').val(user.nickname)
+    $('#newinfopassword').val(user.password)
+    $('#newinfoemail').val(user.email)
+    $('#newinfointro').val(user.intro)
+
+    formVreset('#infoupdsubpanel')
 }
 
 // bottom bar function
@@ -99,6 +133,7 @@ function change_head_title(newtitle) {
 
 // me panel function
 function logout() {
+    popmsg('登出成功', 500)
     setTimeout(() => {
         localStorage.removeItem('loginid')
         get_panel_up(loginpanel)
