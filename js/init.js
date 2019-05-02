@@ -10,6 +10,11 @@ var groupsubpanel = $('#groupsubpanel')
 var mesubpanel = $('#mesubpanel')
 var nowsubpanel = chatsubpanel
 
+mesubpanel.outfunc = function () {
+    get_infosubpanel_up(infosubpanel)
+    formVreset('#infoupdsubpanel')
+}
+
 // person info subpanel
 var infosubpanel = $('#infosubpanel')
 var infoupdsubpanel = $('#infoupdsubpanel')

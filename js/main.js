@@ -1,6 +1,9 @@
 // panel control function
 function get_panel_up(panel) {
     if (nowpanel !== panel) {
+        if (nowpanel.outfunc !== undefined) {
+            nowpanel.outfunc()
+        }
         hide_panel(nowpanel)
         show_panel(panel)
         nowpanel = panel
@@ -9,6 +12,9 @@ function get_panel_up(panel) {
 
 function get_subpanel_up(subpanel) {
     if (nowsubpanel !== subpanel) {
+        if (nowsubpanel.outfunc !== undefined) {
+            nowsubpanel.outfunc()
+        }
         hide_panel(nowsubpanel)
         show_panel(subpanel)
         nowsubpanel = subpanel
