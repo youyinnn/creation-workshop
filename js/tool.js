@@ -883,3 +883,15 @@ function getjwtcliam(jwt, name) {
     let payload = jwt.split('.')[1]
     return JSON.parse(b64.decode(payload))[name]
 }
+
+function localget(key) {
+    localStorage.getItem(key)
+}
+
+function localsave(key, obj) {
+    localStorage.setItem(key, JSON.stringify(obj))
+}
+
+function localremove(key) {
+    localStorage.removeItem(key)
+}

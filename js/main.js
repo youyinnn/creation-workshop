@@ -173,7 +173,7 @@ function fetch_chat_list() {
 // me panel function
 function logout() {
     console.log(123)
-    popmsg('登出成功', 500)
+    popmsg('登出戝功', 500)
     setTimeout(() => {
         localStorage.removeItem('loginid')
         login = null

@@ -35,7 +35,7 @@ var headtitle = $('#headtitle')
 // user login cache
 var loginid = localStorage.getItem('loginid')
 
-// user chat lisr cache
+// user chat list cache(what is ignore)
 // TODO
 
 $(function() {

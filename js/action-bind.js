@@ -1,4 +1,7 @@
 $(function() {
+    // head bar event
+    $('#headtitle,#logo').click(resetdb)
+    
     // bottom bar btn event
     $('#chatbtn').click(function() {
         if (!$('#chatbtn').hasClass('active')) {

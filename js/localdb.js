@@ -173,23 +173,23 @@ var localdb_chatlogtb = {
 var dbnamelist = new Array()
 $(function () {
     if (localStorage['userdb'] === undefined) {
-        localStorage.setItem('userdb', JSON.stringify(lcoaldb_usertb))
+        localsave('userdb', lcoaldb_usertb)
     }
     if (localStorage['chatlogdb'] === undefined) {
-        localStorage.setItem('chatlogdb', JSON.stringify(localdb_chatlogtb))
+        localsave('chatlogdb', localdb_chatlogtb)
     }
     if (localStorage['uredb'] === undefined) {
-        localStorage.setItem('uredb', JSON.stringify(localdb_urelation))
+        localsave('uredb', localdb_urelation)
     }
     if (localStorage['gredb'] === undefined) {
-        localStorage.setItem('gredb', JSON.stringify(localdb_grelation))
+        localsave('gredb', localdb_grelation)
     }
 })
 
 function resetdb() {
-    localStorage.removeItem('userdb')
-    localStorage.removeItem('chatlogdb')
-    localStorage.removeItem('uredb')
-    localStorage.removeItem('gredb')
+    localremove('userdb')
+    localremove('chatlogdb')
+    localremove('uredb')
+    localremove('gredb')
     location.reload()
 }
