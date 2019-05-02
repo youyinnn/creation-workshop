@@ -114,8 +114,8 @@ form .fa-times {
 }
 
 .headbtn {
-  position: absolute;
-  height: 100%;
+  position: fixed;
+  height: 8%;
   width: 50px;
   /* background-color: #fff; */
 
@@ -161,13 +161,17 @@ form .fa-times {
 
 .bottombarbtn {
   width: 33.33333333333333333%;
-  height: 100px;
+  height: 100%;
   float: left;
   text-align: center;
+
+  display: flex;
+  justify-content: center;
+  align-items: Center;
 }
 
 .bottombarbtnlogo {
-  margin-top: 12px;
+  padding-top: 5px;
   display: inline-block;
   cursor: pointer;
   transition: none !important;
