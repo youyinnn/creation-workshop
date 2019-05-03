@@ -28,19 +28,25 @@ var chatbtn = $('#chatbtn')
 var contextbtn = $('#contextbtn')
 var mebtn = $('#mebtn')
 var nowactivebtn = chatbtn
-var botttombar = $('#botttombar')
+var bottombar = $('#bottombar')
+
+// chat box
+var chatbox = $('#chatbox')
+var chatlogbox = $('#chatlogbox')
+
 
 // head bar btn
 var leftbtn = $('#headleftbtn')
 var rightbtn = $('#headrightbtn')
 var headtitle = $('#headtitle')
+var headbar = $('#headbar')
 
 // user login cache
 var loginid = localStorage.getItem('loginid')
 
 $(function() {
     // animations
-    botttombar.animateCss('fadeIn')
+    bottombar.animateCss('fadeIn')
     headtitle.animateCss('fadeIn')
 
     if (loginid === null) {

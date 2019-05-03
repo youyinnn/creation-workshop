@@ -49,6 +49,37 @@ function hide_panel_2(panel) {
     }, 500);
 }
 
+// chat action
+function hide_buttom_bar() {
+    bottombar.css('bottom', '-11%')
+}
+
+function show_buttom_bar() {
+    bottombar.css('bottom', '0')
+}
+
+function hide_chat_box() {
+    chatbox.css('bottom', '-9%')
+    show_buttom_bar()
+}
+
+function show_chat_box() {
+    chatbox.css('bottom', '0')
+    hide_buttom_bar()
+}
+
+function show_chat_log_box() {
+    chatlogbox.css('right', '0')
+    nowsubpanel.css('opacity', '0')
+    show_chat_box()
+}
+
+function hide_chat_log_box() {
+    chatlogbox.css('right', '-100%')
+    nowsubpanel.css('opacity', '1')
+    hide_chat_box()
+}
+
 function show_login_form() {
     $('#loginbox').css('overflow', 'visible')
     adclass($('#loginbox')[0], 'loginformshow')
