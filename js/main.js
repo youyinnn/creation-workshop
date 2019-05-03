@@ -59,8 +59,8 @@ function just_login() {
     }, 100);
 
     // active btns
-    active_bottom_bar_btn (chatbtn)
-    
+    active_bottom_bar_btn(chatbtn)
+
     reflesh_user_info()
     fetch_chat_list()
 }
@@ -141,7 +141,7 @@ function change_head_title(newtitle) {
 
 // chat panel function
 function offset_item(item) {
-    
+
 }
 
 function remove_chat_item(ts) {
@@ -151,6 +151,10 @@ function remove_chat_item(ts) {
     let chatitem = $('[chatid = "' + chatid + '"][chatwith = "' + chatwith + '"]')
     chatitem.css('height', 0)
     chatitem.css('border-bottom-width', 0)
+    setTimeout(() => {
+        p.remove()
+        cache_chat_list()
+    }, 400);
 }
 
 function fetch_chat_list() {
@@ -159,11 +163,19 @@ function fetch_chat_list() {
     for (let i = 0; i < logs.data.length; i++) {
         let log = logs.data[i]
         if (log.chatwith === 'u') {
-            if (log.aid + "" === loginid + "" || log.bid + "" === loginid + "") {
+            let ci
+            if (log.aid + "" === loginid + "") {
+                ci = log.bid
+            } else if (log.bid + "" === loginid + "") {
+                ci = log.aid
+            } else {
+                continue
+            }
+            if (find_in_chat_list_cache('u', ci)) {
                 chat_list_item(log)
             }
         } else {
-            if (is_member(loginid, log.gid)) {
+            if (is_member(loginid, log.gid) && find_in_chat_list_cache('g', log.gid)) {
                 chat_list_item(log)
             }
         }
@@ -180,4 +192,34 @@ function logout() {
         get_panel_up(loginpanel)
         show_login_form()
     }, 1000);
+}
+
+// cache function 
+
+function remove_all_cache() {
+    localremove('c' + loginid)
+}
+
+function cache_chat_list() {
+    let c = new Array()
+    $('.chatlistitem').each(function(a, b) {
+        c.push({
+            chatwith: $(b).attr('chatwith'),
+            chatid: $(b).attr('chatid')
+        })
+    })
+    localsave('c' + loginid, c)
+}
+
+function find_in_chat_list_cache(cw, ci) {
+    let c = JSON.parse(localget('c' + loginid))
+    if (c === undefined || c === null) {
+        return true
+    }
+    let f = c.find(function(v, i) {
+        if (v.chatwith + "" === cw + "" && v.chatid + "" === ci + "") {
+            return true
+        }
+    })
+    return f !== undefined
 }

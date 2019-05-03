@@ -885,7 +885,7 @@ function getjwtcliam(jwt, name) {
 }
 
 function localget(key) {
-    localStorage.getItem(key)
+    return localStorage.getItem(key)
 }
 
 function localsave(key, obj) {

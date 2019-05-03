@@ -1,6 +1,9 @@
 $(function() {
     // head bar event
-    $('#headtitle,#logo').click(resetdb)
+    $('#headtitle,#logo').click(function () {
+        resetdb()
+        remove_all_cache()
+    })
     
     // bottom bar btn event
     $('#chatbtn').click(function() {
