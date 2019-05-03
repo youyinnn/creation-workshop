@@ -37,6 +37,18 @@ function show_panel(panel) {
     rmclass(panel[0], 'hidepanel')
 }
 
+function show_panel_2(panel) {
+    panel.css('opacity', 1)
+    rmclass(panel[0], 'hidepanel')
+}
+
+function hide_panel_2(panel) {
+    panel.css('opacity', 0)
+    setTimeout(() => {
+        adclass(panel[0], 'hidepanel')
+    }, 500);
+}
+
 function show_login_form() {
     $('#loginbox').css('overflow', 'visible')
     adclass($('#loginbox')[0], 'loginformshow')
@@ -53,13 +65,8 @@ function hide_login_form() {
 function just_login() {
     get_panel_up(mainpanel)
     get_subpanel_up(chatsubpanel)
-    // manually animations
-    setTimeout(() => {
-        show_rightbtn()
-    }, 100);
 
-    // active btns
-    active_bottom_bar_btn(chatbtn)
+    $('#chatbtn').click()
 
     reflesh_user_info()
     fetch_chat_list()

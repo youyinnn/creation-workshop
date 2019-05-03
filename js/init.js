@@ -15,6 +15,9 @@ mesubpanel.outfunc = function () {
     formVreset('#infoupdsubpanel')
 }
 
+// float panel
+var addfuncpanel = $('#addfuncpanel')
+
 // person info subpanel
 var infosubpanel = $('#infosubpanel')
 var infoupdsubpanel = $('#infoupdsubpanel')
@@ -34,9 +37,6 @@ var headtitle = $('#headtitle')
 
 // user login cache
 var loginid = localStorage.getItem('loginid')
-
-// user chat list cache(what is ignore)
-// TODO
 
 $(function() {
     // animations

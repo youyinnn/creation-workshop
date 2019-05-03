@@ -122,11 +122,14 @@ form .fa-times {
   height: 8%;
   width: 50px;
   /* background-color: #fff; */
-  cursor: pointer;
 
   display: flex;
   justify-content: center;
   align-items: Center;
+}
+
+.headbtn > i {
+  cursor: pointer;
 }
 
 #headrightbtn {
@@ -329,4 +332,27 @@ form .fa-times {
 .bottombarbtnlogo>i {
   width: 100%;
   font-size: 1.5em;
+}
+
+/* extra float panel */
+#addfuncpanel {
+  width: 140px;
+  height: 160px;
+  position: fixed;
+  top: 8%;
+  right: 0;
+  margin: .2rem .5rem;
+  background-color: #6c757d;
+  border-radius: .5rem;
+}
+
+.afpbtn {
+  padding: .55rem 1rem !important;
+}
+
+.afpbtn > i {
+  width: 16px;
+  height: 16px;
+  text-align: center;
+  margin-right: 4px;
 }

@@ -1,23 +1,28 @@
 $(function() {
     // head bar event
-    $('#headtitle,#logo').click(function () {
+    $('#headtitle,#logo').click(function() {
         resetdb()
         remove_all_cache()
     })
-    
+
     // bottom bar btn event
     $('#chatbtn').click(function() {
         if (!$('#chatbtn').hasClass('active')) {
             hide_leftbtn()
             need_right_function('plus-square-o', function() {
-                console.log('add')
+                if (addfuncpanel.hasClass('hidepanel')) {
+                    show_panel_2(addfuncpanel)
+                } else {
+                    hide_panel_2(addfuncpanel)
+                }
             })
             get_subpanel_up(chatsubpanel)
         }
     })
     $('#contextbtn').click(function() {
         if (!$('#contextbtn').hasClass('active')) {
-            console.log('to contect')
+            hide_leftbtn()
+            hide_rightbtn()
             get_subpanel_up(groupsubpanel)
         }
     })
@@ -98,6 +103,20 @@ $(function() {
     // chat list event
     $('.chatlistfunbtn').click(function() {
         remove_chat_item(this)
+    })
+
+    // * click
+    $('*').click(function() {
+        if (this.id === 'headrightbtn' ||
+            this.id === 'adduserbtn' ||
+            this.id === 'addgroup' ||
+            this.id === 'addtodo' ||
+            this.id === 'addidea') {
+            return false
+        }
+        if (!$('#addfuncpanel').hasClass('hidepanel')) {
+            hide_panel_2(addfuncpanel)
+        }
     })
 
     // chat list item drag event
