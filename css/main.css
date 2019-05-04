@@ -1,5 +1,6 @@
 /* generic */
-body {
+body,
+html {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -97,7 +98,7 @@ form .fa-times {
 
 /* head bar */
 #headbar {
-  position: absolute;
+  position: fixed;
   width: 100%;
   height: 8%;
   background-color: #ccc;
@@ -291,7 +292,7 @@ form .fa-times {
 
 /* bottom bar */
 #bottombar {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   width: 100%;
   height: 10%;
@@ -350,7 +351,7 @@ form .fa-times {
 }
 
 #chatbox {
-  position: absolute;
+  position: fixed;
   bottom: -9%;
   width: 100%;
   height: 8%;
