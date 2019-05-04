@@ -121,6 +121,17 @@ $(function() {
         }
     })
 
+    // send box
+    $('#chatsend').click(function() {
+        let msg = $('#chattext').val()
+        $('#chattext').val('')
+        send_chat(nowchatwith, nowchatid, msg)
+        present_you_just_send(nowchatwith, msg)
+        $('[chatwith = "' + nowchatwith + '"][chatid = "' + nowchatid + '"]')
+            .find('.chatlistitembody')
+            .find('span').text(msg)
+    })
+
     // chat list item drag event
     // $('.chatlistitem').mousedown(function(e) {
     //     if (event.button == 0) {

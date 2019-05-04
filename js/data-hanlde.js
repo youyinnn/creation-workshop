@@ -127,3 +127,16 @@ function is_member(id, gid) {
     }
     return false
 }
+
+// hanlde chat log db
+function send_chat(cw, ci, mg) {
+    let ilog = get_chat_log_from_db(cw, ci)
+    let index = ilog.index
+    let log = ilog.log
+    log.msglog.push({
+        time: new Date().getTime(),
+        msg: mg,
+        from: loginid
+    })
+    upd('chatlogdb', index, log)
+}

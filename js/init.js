@@ -44,6 +44,10 @@ var headbar = $('#headbar')
 // user login cache
 var loginid = localStorage.getItem('loginid')
 
+// chat flag
+var nowchatwith
+var nowchatid
+
 $(function() {
     // animations
     bottombar.animateCss('fadeIn')

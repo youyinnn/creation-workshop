@@ -21,7 +21,7 @@ function chat_list_item(log) {
         tt = b.nickname
     } else {
         let g = sch('gredb', log.gid)
-        
+
         cli.setAttribute('chatwith', 'g')
         cli.setAttribute('chatid', log.gid)
         ci = log.gid
@@ -35,17 +35,19 @@ function chat_list_item(log) {
     clib.innerHTML = '<span>' + log.msglog[log.msglog.length - 1].msg + '</span>'
     clih.innerHTML = '<span>' + tt + '</span>'
     clif.innerHTML = '<i class="fa fa-close"></i>'
-    
+
     appendc(cli, clic)
     appendc(clic, clih)
     appendc(clic, clib)
     appendc(cli, clif)
     appendc($('#chatsubpanel')[0], cli)
 
-    $(clif).click(function(){
+    $(clif).click(function() {
         remove_chat_item(this)
     })
-    $(clic).click(function(){
+    $(clic).click(function() {
+        nowchatwith = cw
+        nowchatid = ci
         get_chat_log_up(tt, cw, ci)
     })
 }
@@ -80,4 +82,29 @@ function present_chat_logs(msglog, cw) {
         appendc(lib, li)
         appendc(chatlogbox[0], lib)
     }
+}
+
+function present_you_just_send(cw, msg) {
+    let lib = c('div')
+    let li = c('div')
+    let lit = c('div')
+    let lim = c('div')
+    if (cw === 'g') {
+        lit.innerHTML = '<span class="badge badge-secondary mr-1">' + dayjs().format('YYYY MM-DD HH:mm') + '</span>' + sch('userdb', loginid).nickname
+    } else {
+        lit.innerHTML = '<span class="badge badge-secondary">' + dayjs().format('YYYY MM-DD HH:mm') + '</span>'
+    }
+    lim.innerText = msg
+
+    adclass(li, 'lime')
+
+    adclass(lit, 'lit')
+    adclass(lim, 'lim')
+    adclass(li, 'li')
+    adclass(lib, 'clearfix')
+
+    appendc(li, lit)
+    appendc(li, lim)
+    appendc(lib, li)
+    appendc(chatlogbox[0], lib)
 }

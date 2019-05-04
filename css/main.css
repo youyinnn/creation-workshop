@@ -344,10 +344,12 @@ form .fa-times {
   right: -100%;
   top: 8%;
   width: 100%;
-  height: 84%;
+  height: 85%;
   background-color: #eee;
+  padding: .5rem 0;
 
   opacity: 0;
+  overflow: scroll;
 }
 
 #chatbox {

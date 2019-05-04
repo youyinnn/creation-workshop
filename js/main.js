@@ -193,11 +193,10 @@ function reset_head_title() {
 // chat panel function
 function get_chat_log_up(title, cw, ci) {
     change_head_title(title)
-    let log = get_chat_log_from_db(cw, ci)
+    let g = get_chat_log_from_db(cw, ci)
     show_chat_log_box()
-    present_chat_logs(log.msglog, cw)
+    present_chat_logs(g.log.msglog, cw)
 }
-
 
 function get_chat_log_from_db(cw, ci) {
     if (ci === loginid) {
@@ -207,26 +206,30 @@ function get_chat_log_from_db(cw, ci) {
     if (c === undefined || c === null) {
         return null
     }
+    let ii = -1
     let f = c.find(function(v, i) {
         if (cw + '' === 'u' && v.chatwith + '' === 'u') {
             if ((v.aid + '' === loginid + '' && v.bid + '' === ci + '') ||
-                (v.bid + '' === loginid + '' && v.aid === ci + '')) {
+                (v.bid + '' === loginid + '' && v.aid + '' === ci + '')) {
+                ii = i
                 return true
             }
         } else if (cw + '' === 'g' && v.chatwith + '' === 'g') {
             if (v.gid + '' === ci + '') {
+                ii = i
                 return true
             }
         }
     })
-    return f
+    return {index: ii, log: f}
 }
 
 function remove_chat_item(ts) {
     let p = $(ts).parent()
     let chatid = p.attr('chatid')
     let chatwith = p.attr('chatwith')
-    let chatitem = $('[chatid = "' + chatid + '"][chatwith = "' + chatwith + '"]')
+    let chatitem = $('[chatid = "' + chatid + '"][chatwith = "' + chatwith + '"]')[0]
+    chatitem = $(chatitem)
     chatitem.css('height', 0)
     chatitem.css('border-bottom-width', 0)
     setTimeout(() => {
