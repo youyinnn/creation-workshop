@@ -46,7 +46,7 @@ $(function() {
         let rs = log_in($('#username')[0].value, $('#password')[0].value)
         if (rs >= 0) {
             localStorage.setItem('loginid', rs)
-            loginid = rs
+            loginid = rs + ''
             popmsg('登陆成功', 500)
             disable_login_form()
             disable_signin_form()
