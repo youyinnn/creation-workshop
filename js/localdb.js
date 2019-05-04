@@ -79,22 +79,22 @@ var localdb_chatlogtb = {
                 {
                     time: 1556779603137,
                     msg: '你好，我是a',
-                    from: 'a',
+                    from: 0,
                 },
                 {
                     time: 1556780688914,
                     msg: '你好，我是b',
-                    from: 'b'
+                    from: 1
                 },
                 {
                     time: 1556780691691,
                     msg: '你吃饭了嘛？',
-                    from: 'a'
+                    from: 0
                 },
                 {
                     time: 1556780692230,
                     msg: '要不一起啊？',
-                    from: 'a'
+                    from: 0
                 }
             ]
         },
@@ -148,22 +148,22 @@ var localdb_chatlogtb = {
                 {
                     time: 1556780731953,
                     msg: '你好啊',
-                    from: 'a'
+                    from: 0
                 },
                 {
                     time: 1556780733791,
                     msg: '你好',
-                    from: 'b'
+                    from: 2
                 },
                 {
                     time: 1556780734369,
                     msg: '你觉得我的计划怎么样',
-                    from: 'a'
+                    from: 0
                 },
                 {
                     time: 1556780735279,
                     msg: '还有哪里需要改进的嘛？',
-                    from: 'a'
+                    from: 0
                 }
             ]
         }

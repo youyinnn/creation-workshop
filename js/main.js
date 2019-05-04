@@ -70,14 +70,21 @@ function show_chat_box() {
 
 function show_chat_log_box() {
     chatlogbox.css('right', '0')
+    chatlogbox.css('opacity', '1')
     nowsubpanel.css('opacity', '0')
     show_chat_box()
+    need_left_function('angle-left', hide_chat_log_box)
+    hide_rightbtn()
+    $('#chatbtn').removeClass('active')
 }
 
 function hide_chat_log_box() {
     chatlogbox.css('right', '-100%')
+    chatlogbox.css('opacity', '0')
     nowsubpanel.css('opacity', '1')
     hide_chat_box()
+    $('#chatbtn').click()
+    reset_head_title()
 }
 
 function show_login_form() {
@@ -177,9 +184,40 @@ function change_head_title(newtitle) {
     headtitle.text(newtitle)
 }
 
-// chat panel function
-function offset_item(item) {
+function reset_head_title() {
+    change_head_title('创意工厂')
+}
 
+// chat panel function
+function get_chat_log_up(title, cw, ci) {
+    change_head_title(title)
+    let log = get_chat_log_from_db(cw, ci)
+    show_chat_log_box()
+    present_chat_logs(log.msglog, cw)
+}
+
+
+function get_chat_log_from_db(cw, ci) {
+    if (ci === loginid) {
+        return undefined
+    }
+    let c = JSON.parse(localget('chatlogdb')).data
+    if (c === undefined || c === null) {
+        return null
+    }
+    let f = c.find(function(v, i) {
+        if (cw + '' === 'u' && v.chatwith + '' === 'u') {
+            if ((v.aid + '' === loginid + '' && v.bid + '' === ci + '') ||
+                (v.bid + '' === loginid + '' && v.aid === ci + '')) {
+                return true
+            }
+        } else if (cw + '' === 'g' && v.chatwith + '' === 'g') {
+            if (v.gid + '' === ci + '') {
+                return true
+            }
+        }
+    })
+    return f
 }
 
 function remove_chat_item(ts) {
@@ -223,7 +261,7 @@ function fetch_chat_list() {
 // me panel function
 function logout() {
     console.log(123)
-    popmsg('登出戝功', 500)
+    popmsg('登出成功', 500)
     setTimeout(() => {
         localStorage.removeItem('loginid')
         login = null
