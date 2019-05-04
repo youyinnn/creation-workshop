@@ -58,7 +58,7 @@ function present_chat_logs(msglog, cw) {
         let lit = c('div')
         let lim = c('div')
         if (cw === 'g') {
-            lit.innerHTML = '<span class="badge badge-secondary mr-1">' + dayjs(msglog[i].time).format('HH:mm') + '</span>' + sch('userdb', msglog[i].from).nickname
+            lit.innerHTML = '<span class="badge badge-secondary mr-1">' + dayjs(msglog[i].time).format('YYYY MM-DD HH:mm') + '</span>' + sch('userdb', msglog[i].from).nickname
         } else {
             lit.innerHTML = '<span class="badge badge-secondary">' + dayjs(msglog[i].time).format('YYYY MM-DD HH:mm') + '</span>'
         }
