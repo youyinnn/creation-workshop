@@ -54,6 +54,8 @@ $(function() {
             show_login_form()
         }, 700);
     } else {
+        disable_login_form()
+        disable_signin_form()
         setTimeout(() => {
             just_login()
         }, 1500);

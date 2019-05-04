@@ -92,7 +92,9 @@ function show_login_form() {
     adclass($('#loginbox')[0], 'loginformshow')
     setTimeout(() => {
         $('#loginform').css('opacity', '1')
-    }, 300);
+    }, 300)
+    enable_login_form()
+    enable_signin_form()
 }
 
 function hide_login_form() {
@@ -260,7 +262,6 @@ function fetch_chat_list() {
 
 // me panel function
 function logout() {
-    console.log(123)
     popmsg('登出成功', 500)
     setTimeout(() => {
         localStorage.removeItem('loginid')
@@ -298,4 +299,26 @@ function find_in_chat_list_cache(cw, ci) {
         }
     })
     return f !== undefined
+}
+
+// login form
+function disable_login_form() {
+    $('#loginform').children().attr('disabled', true)
+    $('#loginform').children().children().attr('disabled', true)
+}
+
+function enable_login_form() {
+    $('#loginform').children().removeAttr('disabled')
+    $('#loginform').children().children().removeAttr('disabled')
+}
+
+// sigin form
+function disable_signin_form() {
+    $('#signinform').children().attr('disabled', true)
+    $('#signinform').children().children().attr('disabled', true)
+}
+
+function enable_signin_form() {
+    $('#signinform').children().removeAttr('disabled')
+    $('#signinform').children().children().removeAttr('disabled')
 }

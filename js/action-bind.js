@@ -48,6 +48,8 @@ $(function() {
             localStorage.setItem('loginid', rs)
             loginid = rs
             popmsg('登陆成功', 500)
+            disable_login_form()
+            disable_signin_form()
             setTimeout(() => {
                 just_login()
             }, 1000);
