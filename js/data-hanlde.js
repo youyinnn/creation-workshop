@@ -128,6 +128,16 @@ function is_member(id, gid) {
     return false
 }
 
+function get_group_member(gid) {
+    let g = sch('gredb', gid)
+    let mb = new Array()
+    for (let i = 0; i < g.mb.length; i++) {
+        let u = sch('userdb', g.mb[i])
+        mb.push(u)
+    }
+    return mb
+}
+
 // hanlde chat log db
 function send_chat(cw, ci, mg) {
     let ilog = get_chat_log_from_db(cw, ci)

@@ -116,18 +116,70 @@ function present_context() {
     for (let i = 0; i < fs.length; i++) {
         let fi = c('div')
         adclass(fi, 'contextitem')
-        fi.uid = fs[i].id
+        fi.setAttribute('uid', fs[i].id)
         fi.innerText = fs[i].nickname
-        
+
         appendc(fb[0], fi)
+        $(fi).click(function() {
+            show_friend_info_box()
+            let u = sch('userdb', fs[i].id)
+            $('#fnickname').text(u.nickname)
+            $('#fusername').val(u.username)
+            $('#femail').val(u.email)
+            $('#fintro').text(u.intro)
+            $('#chatfbtn').unbind('click')
+            $('#chatfbtn').click(function() {
+                hide_friend_info_box()
+                get_chat_log_up(u.nickname, 'u', u.id)
+                need_left_function('angle-left', function() {
+                    chatlogbox.css('right', '-100%')
+                    chatlogbox.css('opacity', '0')
+                    nowsubpanel.css('opacity', '1')
+                    hide_chat_box()
+                    show_friend_info_box()
+                    reset_head_title()
+                })
+            })
+        })
     }
     let gs = get_someone_group_list(loginid)
     for (let i = 0; i < gs.length; i++) {
         let gi = c('div')
         adclass(gi, 'contextitem')
-        gi.gid = gs[i].id
+        gi.setAttribute('gid', gs[i].gid)
         gi.innerText = gs[i].gname
-        
+
         appendc(gb[0], gi)
+
+        $(gi).click(function() {
+            show_group_info_box()
+            let g = sch('gredb', gs[i].gid)
+            $('#gname').text(g.gname)
+            $('#gintro').text(g.gintro)
+            
+            let gmbbox = $('#gmbbox')
+            gmbbox.children().remove()
+            let gmb = get_group_member(g.gid)
+            $('#gmblb').text('群成员(' + gmb.length + ')')
+            for(let i = 0; i < gmb.length; i++) {
+                let mb = c('span')
+                mb.innerText = gmb[i].nickname
+                adclass(mb, 'badge badge-success m-1')
+                appendc(gmbbox[0], mb)
+            }
+            $('#chatgbtn').unbind('click')
+            $('#chatgbtn').click(function() {
+                hide_group_info_box()
+                get_chat_log_up(g.gname, 'g', g.gid)
+                need_left_function('angle-left', function() {
+                    chatlogbox.css('right', '-100%')
+                    chatlogbox.css('opacity', '0')
+                    nowsubpanel.css('opacity', '1')
+                    hide_chat_box()
+                    show_group_info_box()
+                    reset_head_title()
+                })
+            })
+        })
     }
 }

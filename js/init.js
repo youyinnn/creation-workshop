@@ -15,6 +15,11 @@ mesubpanel.outfunc = function () {
     formVreset('#infoupdsubpanel')
 }
 
+contextsubpanel.outfunc = function () {
+    hide_friend_info_box()
+    hide_group_info_box()
+}
+
 // float panel
 var addfuncpanel = $('#addfuncpanel')
 
@@ -25,8 +30,11 @@ var nowinfosubpanel = infosubpanel
 
 // bottom bar btn
 var chatbtn = $('#chatbtn')
+chatsubpanel.btn = chatbtn
 var contextbtn = $('#contextbtn')
+contextsubpanel.btn = contextbtn
 var mebtn = $('#mebtn')
+mesubpanel.btn = mebtn
 var nowactivebtn = chatbtn
 var bottombar = $('#bottombar')
 
@@ -34,12 +42,13 @@ var bottombar = $('#bottombar')
 var chatbox = $('#chatbox')
 var chatlogbox = $('#chatlogbox')
 
-
 // head bar btn
 var leftbtn = $('#headleftbtn')
 var rightbtn = $('#headrightbtn')
 var headtitle = $('#headtitle')
 var headbar = $('#headbar')
+var leftbtnlogo
+var rightbtnlogo
 
 // user login cache
 var loginid = localStorage.getItem('loginid')
@@ -47,6 +56,10 @@ var loginid = localStorage.getItem('loginid')
 // chat flag
 var nowchatwith
 var nowchatid
+
+// context info
+var friendinfobox = $('#friendinfobox')
+var groupinfobox = $('#groupinfobox')
 
 $(function() {
     // animations

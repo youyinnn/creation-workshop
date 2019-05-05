@@ -87,6 +87,49 @@ function hide_chat_log_box() {
     reset_head_title()
 }
 
+function reset_head_btn_status() {
+    if (lefthbtnshow) {
+        need_left_function(leftbtnlogo, lefthbtnfunc)
+    }
+    if (righthbtnshow) {
+        need_right_function(rightbtnlogo, righthbtnfunc)
+    }
+}
+
+// context info
+function show_friend_info_box() {
+    friendinfobox.css('right', '0')
+    friendinfobox.css('opacity', '1')
+    nowsubpanel.css('opacity', '0')
+    need_left_function('angle-left', hide_friend_info_box)
+    hide_rightbtn()
+}
+
+function hide_friend_info_box() {
+    friendinfobox.css('right', '-100%')
+    friendinfobox.css('opacity', '0')
+    nowsubpanel.css('opacity', '1')
+    reset_head_title()
+    hide_leftbtn()
+}
+
+function show_group_info_box() {
+    groupinfobox.css('right', '0')
+    groupinfobox.css('opacity', '1')
+    nowsubpanel.css('opacity', '0')
+    need_left_function('angle-left', hide_group_info_box)
+    hide_rightbtn()
+}
+
+function hide_group_info_box() {
+    groupinfobox.css('right', '-100%')
+    groupinfobox.css('opacity', '0')
+    nowsubpanel.css('opacity', '1')
+    reset_head_title()
+    hide_leftbtn()
+}
+
+// login
 function show_login_form() {
     $('#loginbox').css('overflow', 'visible')
     adclass($('#loginbox')[0], 'loginformshow')
@@ -157,6 +200,7 @@ function need_left_function(logo, func) {
         i.removeClass()
         i.unbind('click')
         i.addClass('functionbtn fa fa-2x ' + 'fa-' + logo)
+        leftbtnlogo = logo
         show_leftbtn()
         i.click(func)
     }, 200);
@@ -177,14 +221,17 @@ function need_right_function(logo, func) {
         i.removeClass()
         i.unbind('click')
         i.addClass('functionbtn fa fa-2x ' + 'fa-' + logo)
+        rightbtnlogo = logo
         show_rightbtn()
         i.click(func)
     }, 200);
 }
 
 function change_head_title(newtitle) {
-    headtitle.animateCss('fadeIn')
-    headtitle.text(newtitle)
+    if (headtitle.text() !== newtitle) {
+        headtitle.animateCss('fadeIn')
+        headtitle.text(newtitle)
+    }
 }
 
 function reset_head_title() {

@@ -93,11 +93,11 @@
 
             <div id="contextsubpanel" class="subpanel hidepanel">
                 <div id="groupbox">
-                    <div class="contextboxhead">Group</div>
+                    <div class="contextboxhead">群组</div>
                     <div class="contextboxbody"></div>
                 </div>
                 <div id="friendbox">
-                    <div class="contextboxhead">Friend</div>
+                    <div class="contextboxhead">好友</div>
                     <div class="contextboxbody"></div>
                 </div>
             </div>
@@ -120,7 +120,7 @@
                         </div>
                         <div class="form-group">
                             <label for="infousername">个人简介</label>
-                            <textarea id="infointro" type="text" class="form-control form-control-sm" disabled rows="5"></textarea>
+                            <textarea id="infointro" type="text" class="form-control form-control-sm" disabled rows="4"></textarea>
                         </div>
                         <button type="button" class="infoupdbtn btn btn-dark" onclick="get_infosubpanel_up(infoupdsubpanel)">修改</button>
                     </form>
@@ -146,7 +146,7 @@
                         </div>
                         <div class="form-group">
                             <label for="newinfointro">个人简介</label>
-                            <textarea name="newinfointro" id="newinfointro" type="text" class="form-control form-control-sm" maxlength="160" rows="5"></textarea>
+                            <textarea name="newinfointro" id="newinfointro" type="text" class="form-control form-control-sm" maxlength="160" rows="4"></textarea>
                         </div>
                         <div class="infoupdbtn btn-group" role="group" aria-label="Basic example">
                             <button type="button" class="btn btn-secondary" onclick="mesubpanel.outfunc()">返回</button>
@@ -207,6 +207,47 @@
 
         <div id="chatlogbox">
 
+        </div>
+
+        <div id="friendinfobox">
+            <form id="friendinfoboxpanel" class="unselectable">
+                <h5 id="fnickname"></h5>
+                <div class="form-group">
+                    <label>账号</label>
+                    <input id="fusername" type="text" class="form-control" disabled>
+                </div>
+                <div class="form-group">
+                    <label>邮箱</label>
+                    <input id="femail" type="email" class="form-control" disabled>
+                </div>
+                <div class="form-group mb-3">
+                    <label>个人简介</label>
+                    <textarea id="fintro" type="text" class="form-control" maxlength="160" rows="5" disabled></textarea>
+                </div>
+                <div class="infoboxbtnbox btn-group" role="group">
+                    <button id="delfbtn" type="button" class="btn btn-danger btn-sm">删除</button>
+                    <button id="chatfbtn" type="button" class="btn btn-primary btn-sm">消息</button>
+                </div>
+            </form>
+        </div>
+        <div id="groupinfobox">
+            <form id="groupinfoboxpanel" class="unselectable">
+                <h5 id="gname"></h5>
+                <div class="form-group">
+                    <label id="gmblb"></label>
+                    <div id="gmbbox" type="text" class="form-control" maxlength="160" rows="5" disabled>
+                    </div>
+                </div>
+                <div class="form-group mb-3">
+                    <label>群简介</label>
+                    <textarea id="gintro" type="text" class="form-control" maxlength="160" rows="5" disabled>
+                    </textarea>
+                </div>
+                <div class="infoboxbtnbox btn-group" role="group">
+                    <button id="quetgbtn" type="button" class="btn btn-danger btn-sm">退出</button>
+                    <button id="chatgbtn" type="button" class="btn btn-primary btn-sm">消息</button>
+                </div>
+            </form>
         </div>
 
         <div id="chatbox">

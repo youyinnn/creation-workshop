@@ -59,11 +59,13 @@ var localdb_grelation = {
         {
             gid: 0,
             gname: 'walkingdead',
+            gintro: '行尸走肉交流群',
             mb: [0,1,2]
         },
         {
             gid: 1,
             gname: 'twins',
+            gintro: '双生子协会',
             mb: [0,2]
         },
     ]
