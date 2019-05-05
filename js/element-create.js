@@ -112,7 +112,9 @@ function present_you_just_send(cw, msg) {
 function present_context() {
     let fs = get_friend(loginid)
     let gb = $('#groupbox .contextboxbody')
+    gb.children().remove()
     let fb = $('#friendbox .contextboxbody')
+    fb.children().remove()
     for (let i = 0; i < fs.length; i++) {
         let fi = c('div')
         adclass(fi, 'contextitem')
