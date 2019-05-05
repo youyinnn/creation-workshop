@@ -235,7 +235,7 @@ function change_head_title(newtitle) {
 }
 
 function reset_head_title() {
-    change_head_title('创意工厂')
+    change_head_title('创意工坊')
 }
 
 // chat panel function
