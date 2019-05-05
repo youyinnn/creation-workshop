@@ -23,7 +23,7 @@ $(function() {
         if (!$('#contextbtn').hasClass('active')) {
             hide_leftbtn()
             hide_rightbtn()
-            get_subpanel_up(groupsubpanel)
+            get_subpanel_up(contextsubpanel)
         }
     })
     $('#mebtn').click(function() {

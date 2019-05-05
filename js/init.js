@@ -6,7 +6,7 @@ var nowpanel = loginpanel
 
 // subpanel
 var chatsubpanel = $('#chatsubpanel')
-var groupsubpanel = $('#groupsubpanel')
+var contextsubpanel = $('#contextsubpanel')
 var mesubpanel = $('#mesubpanel')
 var nowsubpanel = chatsubpanel
 

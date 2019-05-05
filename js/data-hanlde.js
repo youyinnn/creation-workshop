@@ -88,7 +88,7 @@ function get_friend(id) {
     let db = sch('uredb')
     for (let i = 0; i < db.data.length; i++) {
         let re = db.data[i]
-        if (re.uid === id) {
+        if (re.uid + '' === id + '') {
             for (let j = 0; j < re.fs.length; j++ ) {
                 fl.push(sch('userdb', re.fs[j]))
             }
@@ -104,7 +104,7 @@ function get_someone_group_list(id) {
     for (let i = 0; i < db.data.length; i++) {
         let g = db.data[i]
         for (let j = 0; j < g.mb.length; j++ ) {
-            if (g.mb[j] === id) {
+            if (g.mb[j] + '' === id + '') {
                 gl.push(g)
                 break
             }

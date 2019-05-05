@@ -108,3 +108,26 @@ function present_you_just_send(cw, msg) {
     appendc(lib, li)
     appendc(chatlogbox[0], lib)
 }
+
+function present_context() {
+    let fs = get_friend(loginid)
+    let gb = $('#groupbox .contextboxbody')
+    let fb = $('#friendbox .contextboxbody')
+    for (let i = 0; i < fs.length; i++) {
+        let fi = c('div')
+        adclass(fi, 'contextitem')
+        fi.uid = fs[i].id
+        fi.innerText = fs[i].nickname
+        
+        appendc(fb[0], fi)
+    }
+    let gs = get_someone_group_list(loginid)
+    for (let i = 0; i < gs.length; i++) {
+        let gi = c('div')
+        adclass(gi, 'contextitem')
+        gi.gid = gs[i].id
+        gi.innerText = gs[i].gname
+        
+        appendc(gb[0], gi)
+    }
+}

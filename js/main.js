@@ -110,6 +110,7 @@ function just_login() {
 
     reflesh_user_info()
     fetch_chat_list()
+    present_context()
 }
 
 function reflesh_user_info() {
