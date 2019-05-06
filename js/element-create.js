@@ -60,9 +60,9 @@ function present_chat_logs(msglog, cw) {
         let lit = c('div')
         let lim = c('div')
         if (cw === 'g') {
-            lit.innerHTML = '<span class="badge badge-secondary mr-1">' + dayjs(msglog[i].time).format('YYYY MM-DD HH:mm') + '</span>' + sch('userdb', msglog[i].from).nickname
+            lit.innerHTML = '<span class="badge badge-secondary mr-1">' + dayjs(msglog[i].time).format('YYYY/MM/DD HH:mm') + '</span>' + sch('userdb', msglog[i].from).nickname
         } else {
-            lit.innerHTML = '<span class="badge badge-secondary">' + dayjs(msglog[i].time).format('YYYY MM-DD HH:mm') + '</span>'
+            lit.innerHTML = '<span class="badge badge-secondary">' + dayjs(msglog[i].time).format('YYYY/MM/DD HH:mm') + '</span>'
         }
         lim.innerText = msglog[i].msg
 
@@ -90,9 +90,9 @@ function present_you_just_send(cw, msg) {
     let lit = c('div')
     let lim = c('div')
     if (cw === 'g') {
-        lit.innerHTML = '<span class="badge badge-secondary mr-1">' + dayjs().format('YYYY MM-DD HH:mm') + '</span>' + sch('userdb', loginid).nickname
+        lit.innerHTML = '<span class="badge badge-secondary mr-1">' + dayjs().format('YYYY/MM/DD HH:mm') + '</span>' + sch('userdb', loginid).nickname
     } else {
-        lit.innerHTML = '<span class="badge badge-secondary">' + dayjs().format('YYYY MM-DD HH:mm') + '</span>'
+        lit.innerHTML = '<span class="badge badge-secondary">' + dayjs().format('YYYY/MM/DD HH:mm') + '</span>'
     }
     lim.innerText = msg
 
@@ -158,12 +158,12 @@ function present_context() {
             let g = sch('gredb', gs[i].gid)
             $('#gname').text(g.gname)
             $('#gintro').text(g.gintro)
-            
+
             let gmbbox = $('#gmbbox')
             gmbbox.children().remove()
             let gmb = get_group_member(g.gid)
             $('#gmblb').text('群成员(' + gmb.length + ')')
-            for(let i = 0; i < gmb.length; i++) {
+            for (let i = 0; i < gmb.length; i++) {
                 let mb = c('span')
                 mb.innerText = gmb[i].nickname
                 adclass(mb, 'badge badge-success m-1')
@@ -218,13 +218,30 @@ function present_ing_todo() {
             ibody.innerHTML = '<span>' + '还剩: ' + getTimePeriod(td.finishtime - new Date().getTime()) + '</span>'
         }, 1000);
 
-        $(itfunc).click(function(){
+        $(itfunc).click(function() {
             itfunc.innerHTML = '<i class="fa fa-check-square-o"></i>'
             remove_todo_item(this)
             finish_todo(td.index)
         })
+        $(itc).click(function() {
+            $('#todoinfoboxpanel button').removeClass('hidepanel')
+            $('#tododetail').attr('rows', 2)
+            show_todo_info_box()
+            change_head_title('正在进行')
+            $('#todotitle, #newtodotitle').val(td.title)
+            $('#todostarttime, #newtodostarttime').val(dayjs(td.starttime).format('YYYY/MM/DD HH:mm'))
+            $('#todofinishtime, #newtodofinishtime').val(dayjs(td.finishtime).format('YYYY/MM/DD HH:mm'))
+            $('#tododetail, #newtododetail').text(td.detail)
+            $('#finishtodo').unbind('click')
+            $('#finishtodo').click(function() {
+                $(itfunc).click()
+                hide_todo_info_box()
+            })
+            nowtodoindex = td.index
+        })
     }
 }
+
 function present_done_todo() {
     todolist.children().remove()
     let rs = get_done_todo()
@@ -238,7 +255,7 @@ function present_done_todo() {
 
         ihead.innerHTML = '<span>' + td.title + '</span>'
         ibody.innerHTML = '<span>' + td.starttime + '</span>'
-        ibody.innerHTML = '<span>' + dayjs(td.starttime).format('YYYY MM-DD HH:mm') + ' - ' + dayjs(td.finishtime).format('YYYY MM-DD HH:mm') + '</span>'
+        ibody.innerHTML = '<span>' + dayjs(td.starttime).format('YYYY/MM/DD HH:mm') + ' - ' + dayjs(td.finishtime).format('YYYY/MM/DD HH:mm') + '</span>'
         itfunc.innerHTML = '<i class="fa fa-check-square-o"></i>'
 
         adclass(it, 'chatlistitem')
@@ -253,8 +270,19 @@ function present_done_todo() {
         appendc(it, itfunc)
         appendc(todolist[0], it)
 
+        $(itc).click(function() {
+            show_todo_info_box()
+            change_head_title('已完成')
+            $('#todotitle').val(td.title)
+            $('#todostarttime').val(dayjs(td.starttime).format('YYYY/MM/DD HH:mm'))
+            $('#todofinishtime').val(dayjs(td.finishtime).format('YYYY/MM/DD HH:mm'))
+            $('#tododetail').text(td.detail)
+            $('#todoinfoboxpanel button').addClass('hidepanel')
+            $('#tododetail').attr('rows', 4)
+        })
     }
 }
+
 function present_undone_todo() {
     todolist.children().remove()
     let rs = get_undone_todo()
@@ -268,7 +296,7 @@ function present_undone_todo() {
 
         ihead.innerHTML = '<span>' + td.title + '</span>'
         ibody.innerHTML = '<span>' + td.starttime + '</span>'
-        ibody.innerHTML = '<span>' + dayjs(td.starttime).format('YYYY MM-DD HH:mm') + ' - ' + dayjs(td.finishtime).format('YYYY MM-DD HH:mm') + '</span>'
+        ibody.innerHTML = '<span>' + dayjs(td.starttime).format('YYYY/MM/DD HH:mm') + ' - ' + dayjs(td.finishtime).format('YYYY/MM/DD HH:mm') + '</span>'
         itfunc.innerHTML = '<i class="fa fa-minus-square-o"></i>'
 
         adclass(it, 'chatlistitem')
@@ -283,5 +311,15 @@ function present_undone_todo() {
         appendc(it, itfunc)
         appendc(todolist[0], it)
 
+        $(itc).click(function() {
+            show_todo_info_box()
+            change_head_title('未完成')
+            $('#todotitle').val(td.title)
+            $('#todostarttime').val(dayjs(td.starttime).format('YYYY/MM/DD HH:mm'))
+            $('#todofinishtime').val(dayjs(td.finishtime).format('YYYY/MM/DD HH:mm'))
+            $('#tododetail').text(td.detail)
+            $('#todoinfoboxpanel button').addClass('hidepanel')
+            $('#tododetail').attr('rows', 4)
+        })
     }
 }

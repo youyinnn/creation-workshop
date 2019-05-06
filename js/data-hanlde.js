@@ -4,8 +4,8 @@ function ins(dbname, data) {
     db.idkey++
     data.id = db.idkey
     db.data.push(data)
-    console.log(db)
     localStorage.setItem(dbname, JSON.stringify(db))
+    return db.idkey
 }
 
 function upd(dbname, id, newdata) {
@@ -60,10 +60,14 @@ function sign_in(un, em, pw1, pw2) {
                 return 2
             }
         }
-        ins('userdb', {
+        let id = ins('userdb', {
             username: un,
             email: em,
             password: pw1
+        })
+        ins('tododb', {
+            uid: id,
+            todos:[]
         })
         // sign in success
         return 1
@@ -209,6 +213,29 @@ function get_undone_todo() {
 function finish_todo(i) {
     let tds = find_user_todo()
     tds.todos[i].finish = true
-    console.log(tds)
+    upd('tododb', tds.index, tds)
+}
+
+function update_todo(tt, st, ft, dt) {
+    let tds = find_user_todo()
+    tds.todos[nowtodoindex] = {
+        title: tt,
+        starttime: st,
+        finishtime: ft,
+        detail: dt,
+        finish: false
+    }
+    upd('tododb', tds.index, tds)
+}
+
+function add_todo(tt, st, ft, dt) {
+    let tds = find_user_todo()
+    tds.todos.push({
+        title: tt,
+        starttime: st,
+        finishtime: ft,
+        detail: dt,
+        finish: false
+    })
     upd('tododb', tds.index, tds)
 }

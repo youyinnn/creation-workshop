@@ -153,6 +153,44 @@ $(function() {
             present_undone_todo()
         }
     })
+    $('#todoinfoboxpanel .infoupdbtn.btn.btn-dark').click(function() {
+        $('#todoinfoboxpanel').addClass('hidepanel')
+        $('#newtodoinfoboxpanel').removeClass('hidepanel')
+
+        let st = $('#newtodostarttime').val().split(' ')
+        let ft = $('#newtodofinishtime').val().split(' ')
+        $('#newtodostarttime').datetimepicker({
+            defaultDate: st[0],
+            defaultTime: st[1]
+        })
+        $('#newtodofinishtime').datetimepicker({
+            defaultDate: ft[0],
+            defaultTime: ft[1]
+        })
+    })
+    $('#newtodoreturn').click(function(){
+        $('#todoinfoboxpanel').removeClass('hidepanel')
+        $('#newtodoinfoboxpanel').addClass('hidepanel')
+    })
+    $('#newtodosubmit').click(function(){
+        update_todo(
+            $('#newtodotitle').val(),
+            $('#newtodostarttime').datetimepicker('getValue').getTime(),
+            $('#newtodofinishtime').datetimepicker('getValue').getTime(),
+            $('#newtododetail').val()
+        )
+        $('#todotitle').val($('#newtodotitle').val())
+        $('#todostarttime').val(dayjs($('#newtodostarttime').datetimepicker('getValue').getTime()).format('YYYY/MM/DD HH:mm'))
+        $('#todofinishtime').val(dayjs($('#newtodofinishtime').datetimepicker('getValue').getTime()).format('YYYY/MM/DD HH:mm'))
+        $('#tododetail').val($('#newtododetail').val())
+        setTimeout(() => {
+            $('#donebtn').click()
+            $('#ingbtn').click()
+        }, 200);
+        setTimeout(() => {
+            $('#newtodoreturn').click()
+        }, 600);
+    })
 
     // send box
     $('#chatsend').click(function() {

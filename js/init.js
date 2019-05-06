@@ -10,19 +10,19 @@ var contextsubpanel = $('#contextsubpanel')
 var mesubpanel = $('#mesubpanel')
 var nowsubpanel = chatsubpanel
 
-mesubpanel.outfunc = function () {
+mesubpanel.outfunc = function() {
+    hide_todo_box()
+    todoinfobox.css('right', '-100%')
+    todoinfobox.css('opacity', '0')
+    reset_head_title()
+    hide_idea_box()
     get_infosubpanel_up(infosubpanel)
     formVreset('#infoupdsubpanel')
 }
 
-contextsubpanel.outfunc = function () {
+contextsubpanel.outfunc = function() {
     hide_friend_info_box()
     hide_group_info_box()
-}
-
-mesubpanel.outfunc = function () {
-    hide_todo_box()
-    hide_idea_box()
 }
 
 // float panel
@@ -68,8 +68,11 @@ var groupinfobox = $('#groupinfobox')
 
 // todo idea
 var todobox = $('#todobox')
+var todoinfobox = $('#todoinfobox')
 var ideabox = $('#ideabox')
+var ideainfobox = $('#ideainfobox')
 var todolist = $('#todolist')
+var nowtodoindex
 
 $(function() {
     // animations

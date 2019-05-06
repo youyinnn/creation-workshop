@@ -130,12 +130,76 @@ function hide_group_info_box() {
 }
 
 // todo & idea
+
+function new_todo() {
+    show_todo_info_box()
+
+    $('#todoinfoboxpanel').addClass('hidepanel')
+    $('#newtodoinfoboxpanel').removeClass('hidepanel')
+
+    $('#newtodotitle').val('')
+    $('#newtodostarttime').val('')
+    $('#newtodofinishtime').val('')
+    $('#newtododetail').val('')
+
+    $('#newtodoreturn').unbind('click')
+    $('#newtodoreturn').click(function() {
+        hide_todo_info_box()
+        $('#todoinfoboxpanel').removeClass('hidepanel')
+        $('#newtodoinfoboxpanel').addClass('hidepanel')
+
+        $('#newtodoreturn').unbind('click')
+        $('#newtodoreturn').click(function() {
+            $('#todoinfoboxpanel').removeClass('hidepanel')
+            $('#newtodoinfoboxpanel').addClass('hidepanel')
+        })
+    })
+
+    $('#newtodosubmit').unbind('click')
+    $('#newtodosubmit').click(function() {
+        add_todo(
+            $('#newtodotitle').val(),
+            $('#newtodostarttime').datetimepicker('getValue').getTime(),
+            $('#newtodofinishtime').datetimepicker('getValue').getTime(),
+            $('#newtododetail').val()
+        )
+        setTimeout(() => {
+            $('#donebtn').click()
+            $('#ingbtn').click()
+        }, 200);
+        setTimeout(() => {
+            $('#newtodoreturn').click()
+        }, 600);
+
+        $('#newtodosubmit').unbind('click')
+        $('#newtodosubmit').click(function() {
+            update_todo(
+                $('#newtodotitle').val(),
+                $('#newtodostarttime').datetimepicker('getValue').getTime(),
+                $('#newtodofinishtime').datetimepicker('getValue').getTime(),
+                $('#newtododetail').val()
+            )
+            $('#todotitle').val($('#newtodotitle').val())
+            $('#todostarttime').val(dayjs($('#newtodostarttime').datetimepicker('getValue').getTime()).format('YYYY/MM/DD HH:mm'))
+            $('#todofinishtime').val(dayjs($('#newtodofinishtime').datetimepicker('getValue').getTime()).format('YYYY/MM/DD HH:mm'))
+            $('#tododetail').val($('#newtododetail').val())
+            setTimeout(() => {
+                $('#donebtn').click()
+                $('#ingbtn').click()
+            }, 200);
+            setTimeout(() => {
+                $('#newtodoreturn').click()
+            }, 600);
+        })
+    })
+}
+
 function show_todo_box() {
     todobox.css('right', '0')
     todobox.css('opacity', '1')
     nowsubpanel.css('opacity', '0')
     need_left_function('angle-left', hide_todo_box)
-    need_right_function('plus-square-o', hide_todo_box)
+    need_right_function('plus-square-o', new_todo)
 }
 
 function hide_todo_box() {
@@ -145,6 +209,23 @@ function hide_todo_box() {
     reset_head_title()
     hide_leftbtn()
     hide_rightbtn()
+}
+
+function show_todo_info_box() {
+    todoinfobox.css('right', '0')
+    todoinfobox.css('opacity', '1')
+    todobox.css('opacity', '0')
+    need_left_function('angle-left', hide_todo_info_box)
+    hide_rightbtn()
+}
+
+function hide_todo_info_box() {
+    todoinfobox.css('right', '-100%')
+    todoinfobox.css('opacity', '0')
+    todobox.css('opacity', '1')
+    reset_head_title()
+    need_left_function('angle-left', hide_todo_box)
+    need_right_function('plus-square-o', new_todo)
 }
 
 function show_idea_box() {
@@ -190,6 +271,9 @@ function just_login() {
     fetch_chat_list()
     present_context()
     present_ing_todo()
+
+    $('#newtodostarttime').datetimepicker()
+    $('#newtodofinishtime').datetimepicker()
 }
 
 function reflesh_user_info() {
@@ -305,7 +389,10 @@ function get_chat_log_from_db(cw, ci) {
             }
         }
     })
-    return {index: ii, log: f}
+    return {
+        index: ii,
+        log: f
+    }
 }
 
 function remove_chat_item(ts) {
@@ -420,4 +507,15 @@ function disable_signin_form() {
 function enable_signin_form() {
     $('#signinform').children().removeAttr('disabled')
     $('#signinform').children().children().removeAttr('disabled')
+}
+
+// todo form
+function disable_todo_info_form() {
+    $('#todoinfoboxpanel').children().attr('disabled', true)
+    $('#todoinfoboxpanel').children().children().attr('disabled', true)
+}
+
+function enable_todo_info_form() {
+    $('#todoinfoboxpanel').children().removeAttr('disabled')
+    $('#todoinfoboxpanel').children().children().removeAttr('disabled')
 }

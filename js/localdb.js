@@ -206,7 +206,15 @@ var localdb_tododb = {
                     finish: false
                 }
             ]
-        }
+        },
+        {
+            uid: 1,
+            todos: []
+        },
+        {
+            uid: 2,
+            todos: []
+        },
     ]
 }
 

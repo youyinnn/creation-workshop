@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="./lib/css/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="./lib/css/bootstrap.min.css">
     <link rel="stylesheet" href="./lib/css/animate.min.css">
-    <link rel="stylesheet" href="./lib/css/jquery-ui.min.css">
+    <link rel="stylesheet" href="./lib/css/jquery.datetimepicker.css">
 
     <title>CYGF</title>
 </head>
@@ -268,7 +268,62 @@
 
             </div>
         </div>
+        <div id="todoinfopanel">
+            <div id="todoinfobox">
+                <form id="todoinfoboxpanel" class="subpanel unselectable">
+                    <h5>待办信息</h5>
+                    <div class="form-group">
+                        <label>标题</label>
+                        <input id="todotitle" type="text" class="form-control" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label>开始时间</label>
+                        <input id="todostarttime" type="text" class="form-control" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label>截止时间</label>
+                        <input id="todofinishtime" type="email" class="form-control" disabled>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label>详细内容</label>
+                        <textarea id="tododetail" type="text" class="form-control" maxlength="160" rows="2" disabled></textarea>
+                    </div>
+                    <button type="button" class="infoupdbtn btn btn-dark">修改</button>
+                    <div class="infoboxbtnbox btn-group" role="group">
+                        <button id="deletodo" type="button" class="btn btn-danger btn-sm">删除</button>
+                        <button id="finishtodo" type="button" class="btn btn-primary btn-sm">完成</button>
+                    </div>
+                </form>
+                <form id="newtodoinfoboxpanel" class="subpanel unselectable hidepanel">
+                    <h5>待办信息</h5>
+                    <div class="form-group">
+                        <label>标题</label>
+                        <input id="newtodotitle" type="text" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>开始时间</label>
+                        <input id="newtodostarttime" type="text" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>截止时间</label>
+                        <input id="newtodofinishtime" type="email" class="form-control">
+                    </div>
+                    <div class="form-group mb-3">
+                        <label>详细内容</label>
+                        <textarea id="newtododetail" type="text" class="form-control" maxlength="160" rows="4"></textarea>
+                    </div>
+                    <div class="infoupdbtn btn-group" role="group" aria-label="Basic example">
+                        <button id="newtodoreturn" type="button" class="btn btn-secondary">返回</button>
+                        <button id="newtodosubmit" type="button" class="btn btn-success">提交</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
         <div id="ideabox">
+
+        </div>
+        <div id="ideainfobox">
 
         </div>
 
@@ -279,9 +334,9 @@
     </div>
 
     <script src="./lib/js/jquery-3.3.1.min.js"></script>
-    <script src="./lib/js/jquery-ui.min.js"></script>
     <script src="./lib/js/bootstrap.bundle.min.js"></script>
     <script src="./lib/js/dayjs.min.js"></script>
+    <script src="./lib/js/jquery.datetimepicker.full.min.js"></script>
 
     <script src="./js/tool.js"></script>
 
