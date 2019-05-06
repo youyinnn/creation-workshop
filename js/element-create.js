@@ -185,3 +185,103 @@ function present_context() {
         })
     }
 }
+
+function present_ing_todo() {
+    todolist.children().remove()
+    let rs = get_ing_todo()
+    for (let i = 0; i < rs.length; i++) {
+        let td = rs[i]
+        let it = c('div')
+        let itc = c('div')
+        let itfunc = c('div')
+        let ihead = c('div')
+        let ibody = c('div')
+
+        ihead.innerHTML = '<span>' + td.title + '</span>'
+        ibody.innerHTML = '<span>' + '还剩: ' + getTimePeriod(td.finishtime - new Date().getTime()) + '</span>'
+
+        itfunc.innerHTML = '<i class="fa fa-square-o"></i>'
+
+        adclass(it, 'chatlistitem')
+        adclass(itc, 'chatlistitemcontent')
+        adclass(ihead, 'chatlistitemhead')
+        adclass(ibody, 'chatlistitembody')
+        adclass(itfunc, 'chatlistfunbtn')
+
+        appendc(it, itc)
+        appendc(itc, ihead)
+        appendc(itc, ibody)
+        appendc(it, itfunc)
+        appendc(todolist[0], it)
+
+        setInterval(() => {
+            ibody.innerHTML = '<span>' + '还剩: ' + getTimePeriod(td.finishtime - new Date().getTime()) + '</span>'
+        }, 1000);
+
+        $(itfunc).click(function(){
+            itfunc.innerHTML = '<i class="fa fa-check-square-o"></i>'
+            remove_todo_item(this)
+            finish_todo(td.index)
+        })
+    }
+}
+function present_done_todo() {
+    todolist.children().remove()
+    let rs = get_done_todo()
+    for (let i = 0; i < rs.length; i++) {
+        let td = rs[i]
+        let it = c('div')
+        let itc = c('div')
+        let itfunc = c('div')
+        let ihead = c('div')
+        let ibody = c('div')
+
+        ihead.innerHTML = '<span>' + td.title + '</span>'
+        ibody.innerHTML = '<span>' + td.starttime + '</span>'
+        ibody.innerHTML = '<span>' + dayjs(td.starttime).format('YYYY MM-DD HH:mm') + ' - ' + dayjs(td.finishtime).format('YYYY MM-DD HH:mm') + '</span>'
+        itfunc.innerHTML = '<i class="fa fa-check-square-o"></i>'
+
+        adclass(it, 'chatlistitem')
+        adclass(itc, 'chatlistitemcontent')
+        adclass(ihead, 'chatlistitemhead')
+        adclass(ibody, 'chatlistitembody')
+        adclass(itfunc, 'chatlistfunbtn')
+
+        appendc(it, itc)
+        appendc(itc, ihead)
+        appendc(itc, ibody)
+        appendc(it, itfunc)
+        appendc(todolist[0], it)
+
+    }
+}
+function present_undone_todo() {
+    todolist.children().remove()
+    let rs = get_undone_todo()
+    for (let i = 0; i < rs.length; i++) {
+        let td = rs[i]
+        let it = c('div')
+        let itc = c('div')
+        let itfunc = c('div')
+        let ihead = c('div')
+        let ibody = c('div')
+
+        ihead.innerHTML = '<span>' + td.title + '</span>'
+        ibody.innerHTML = '<span>' + td.starttime + '</span>'
+        ibody.innerHTML = '<span>' + dayjs(td.starttime).format('YYYY MM-DD HH:mm') + ' - ' + dayjs(td.finishtime).format('YYYY MM-DD HH:mm') + '</span>'
+        itfunc.innerHTML = '<i class="fa fa-minus-square-o"></i>'
+
+        adclass(it, 'chatlistitem')
+        adclass(itc, 'chatlistitemcontent')
+        adclass(ihead, 'chatlistitemhead')
+        adclass(ibody, 'chatlistitembody')
+        adclass(itfunc, 'chatlistfunbtn')
+
+        appendc(it, itc)
+        appendc(itc, ihead)
+        appendc(itc, ibody)
+        appendc(it, itfunc)
+        appendc(todolist[0], it)
+
+    }
+}

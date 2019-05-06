@@ -69,6 +69,7 @@ var groupinfobox = $('#groupinfobox')
 // todo idea
 var todobox = $('#todobox')
 var ideabox = $('#ideabox')
+var todolist = $('#todolist')
 
 $(function() {
     // animations

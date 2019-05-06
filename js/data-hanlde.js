@@ -10,7 +10,7 @@ function ins(dbname, data) {
 
 function upd(dbname, id, newdata) {
     let db = JSON.parse(localStorage.getItem(dbname))
-    for(var name in newdata){
+    for (var name in newdata) {
         db.data[id][name] = newdata[name]
     }
     localStorage.setItem(dbname, JSON.stringify(db))
@@ -50,7 +50,7 @@ function log_in(username, password) {
     return -2
 }
 
-function sign_in(un,  em, pw1, pw2) {
+function sign_in(un, em, pw1, pw2) {
     if (pw1 === pw2) {
         let db = sch('userdb')
         for (let i = 0; i < db.data.length; i++) {
@@ -89,7 +89,7 @@ function get_friend(id) {
     for (let i = 0; i < db.data.length; i++) {
         let re = db.data[i]
         if (re.uid + '' === id + '') {
-            for (let j = 0; j < re.fs.length; j++ ) {
+            for (let j = 0; j < re.fs.length; j++) {
                 fl.push(sch('userdb', re.fs[j]))
             }
             return fl;
@@ -103,7 +103,7 @@ function get_someone_group_list(id) {
     let db = sch('gredb')
     for (let i = 0; i < db.data.length; i++) {
         let g = db.data[i]
-        for (let j = 0; j < g.mb.length; j++ ) {
+        for (let j = 0; j < g.mb.length; j++) {
             if (g.mb[j] + '' === id + '') {
                 gl.push(g)
                 break
@@ -118,7 +118,7 @@ function is_member(id, gid) {
     for (let i = 0; i < db.data.length; i++) {
         let g = db.data[i]
         if (g.gid + "" === gid + "") {
-            for (let j = 0; j < g.mb.length; j++ ) {
+            for (let j = 0; j < g.mb.length; j++) {
                 if (g.mb[j] + "" === id + "") {
                     return true
                 }
@@ -149,4 +149,66 @@ function send_chat(cw, ci, mg) {
         from: loginid
     })
     upd('chatlogdb', index, log)
+}
+
+// handle todo db
+function find_user_todo() {
+    let db = sch('tododb')
+    let tds
+    for (let i = 0; i < db.data.length; i++) {
+        let rc = db.data[i]
+        if (rc.uid + '' === loginid + '') {
+            tds = {
+                index: i,
+                todos: rc.todos
+            }
+        }
+    }
+    return tds
+}
+
+function get_ing_todo() {
+    let tds = find_user_todo().todos
+    let rs = new Array()
+    for (let i = 0; i < tds.length; i++) {
+        let td = tds[i]
+        if (!td.finish && td.finishtime > new Date().getTime()) {
+            td.index = i
+            rs.push(td)
+        }
+    }
+    return rs
+}
+
+function get_done_todo() {
+    let tds = find_user_todo().todos
+    let rs = new Array()
+    for (let i = 0; i < tds.length; i++) {
+        let td = tds[i]
+        if (td.finish) {
+            td.index = i
+            rs.push(td)
+        }
+    }
+    return rs
+}
+
+function get_undone_todo() {
+    let tds = find_user_todo().todos
+    let rs = new Array()
+    for (let i = 0; i < tds.length; i++) {
+        let td = tds[i]
+        if (!td.finish && td.finishtime <= new Date().getTime()) {
+            td.index = i
+            rs.push(td)
+        }
+    }
+    return rs
+}
+
+function finish_todo(i) {
+    let tds = find_user_todo()
+    tds.todos[i].finish = true
+    console.log(tds)
+    upd('tododb', tds.index, tds)
 }

@@ -189,6 +189,7 @@ function just_login() {
     reflesh_user_info()
     fetch_chat_list()
     present_context()
+    present_ing_todo()
 }
 
 function reflesh_user_info() {
@@ -319,6 +320,18 @@ function remove_chat_item(ts) {
         p.remove()
         cache_chat_list()
     }, 400);
+}
+
+function remove_todo_item(ts) {
+    $(ts).unbind('click')
+    let p = $(ts).parent()
+    setTimeout(() => {
+        p.css('height', 0)
+        p.css('border-bottom-width', 0)
+    }, 400);
+    setTimeout(() => {
+        p.remove()
+    }, 800);
 }
 
 function fetch_chat_list() {

@@ -136,18 +136,21 @@ $(function() {
         if ($('#ingbtn .cohide').length === 1) {
             $('#todocatebox .co').addClass('cohide')
             $('#ingbtn .co').removeClass('cohide')
+            present_ing_todo()
         }
     })
     $('#donebtn').click(function() {
         if ($('#donebtn .cohide').length === 1) {
             $('#todocatebox .co').addClass('cohide')
             $('#donebtn .co').removeClass('cohide')
+            present_done_todo()
         }
     })
-    $('#failedbtn').click(function() {
-        if ($('#failedbtn .cohide').length === 1) {
+    $('#undonebtn').click(function() {
+        if ($('#undonebtn .cohide').length === 1) {
             $('#todocatebox .co').addClass('cohide')
-            $('#failedbtn .co').removeClass('cohide')
+            $('#undonebtn .co').removeClass('cohide')
+            present_undone_todo()
         }
     })
 
