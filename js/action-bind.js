@@ -121,6 +121,36 @@ $(function() {
         }
     })
 
+    // todo & idea
+    $('#todobtn').click(function() {
+        show_todo_box()
+        change_head_title('待办事项')
+    })
+    $('#ideabtn').click(function() {
+        change_head_title('我的点子')
+        show_idea_box()
+    })
+
+    // todo
+    $('#ingbtn').click(function() {
+        if ($('#ingbtn .cohide').length === 1) {
+            $('#todocatebox .co').addClass('cohide')
+            $('#ingbtn .co').removeClass('cohide')
+        }
+    })
+    $('#donebtn').click(function() {
+        if ($('#donebtn .cohide').length === 1) {
+            $('#todocatebox .co').addClass('cohide')
+            $('#donebtn .co').removeClass('cohide')
+        }
+    })
+    $('#failedbtn').click(function() {
+        if ($('#failedbtn .cohide').length === 1) {
+            $('#todocatebox .co').addClass('cohide')
+            $('#failedbtn .co').removeClass('cohide')
+        }
+    })
+
     // send box
     $('#chatsend').click(function() {
         let msg = $('#chattext').val()

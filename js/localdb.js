@@ -172,6 +172,30 @@ var localdb_chatlogtb = {
     ]
 }
 
+var localdb_tododb = {
+    data: [
+        {
+            uid: 0,
+            todos: [
+                {
+                    title: '英语作业',
+                    starttime: 1557106044009,
+                    finishtime: 1557206544009,
+                    detail: '做完练习1-3章',
+                    finish: false
+                },
+                {
+                    title: '数学作业',
+                    starttime: 1557106047368,
+                    finishtime: 1557306047368,
+                    detail: '做完练习9-15章',
+                    finish: false
+                }
+            ]
+        }
+    ]
+}
+
 var dbnamelist = new Array()
 $(function () {
     if (localStorage['userdb'] === undefined) {
@@ -186,6 +210,9 @@ $(function () {
     if (localStorage['gredb'] === undefined) {
         localsave('gredb', localdb_grelation)
     }
+    if (localStorage['tododb'] === undefined) {
+        localsave('tododb', localdb_tododb)
+    }
 })
 
 function resetdb() {
@@ -193,5 +220,6 @@ function resetdb() {
     localremove('chatlogdb')
     localremove('uredb')
     localremove('gredb')
+    localremove('tododb')
     location.reload()
 }

@@ -129,6 +129,41 @@ function hide_group_info_box() {
     hide_leftbtn()
 }
 
+// todo & idea
+function show_todo_box() {
+    todobox.css('right', '0')
+    todobox.css('opacity', '1')
+    nowsubpanel.css('opacity', '0')
+    need_left_function('angle-left', hide_todo_box)
+    need_right_function('plus-square-o', hide_todo_box)
+}
+
+function hide_todo_box() {
+    todobox.css('right', '-100%')
+    todobox.css('opacity', '0')
+    nowsubpanel.css('opacity', '1')
+    reset_head_title()
+    hide_leftbtn()
+    hide_rightbtn()
+}
+
+function show_idea_box() {
+    ideabox.css('right', '0')
+    ideabox.css('opacity', '1')
+    nowsubpanel.css('opacity', '0')
+    need_left_function('angle-left', hide_idea_box)
+    need_right_function('plus-square-o', hide_idea_box)
+}
+
+function hide_idea_box() {
+    ideabox.css('right', '-100%')
+    ideabox.css('opacity', '0')
+    nowsubpanel.css('opacity', '1')
+    reset_head_title()
+    hide_leftbtn()
+    hide_rightbtn()
+}
+
 // login
 function show_login_form() {
     $('#loginbox').css('overflow', 'visible')

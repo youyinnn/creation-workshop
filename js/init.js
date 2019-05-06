@@ -20,6 +20,11 @@ contextsubpanel.outfunc = function () {
     hide_group_info_box()
 }
 
+mesubpanel.outfunc = function () {
+    hide_todo_box()
+    hide_idea_box()
+}
+
 // float panel
 var addfuncpanel = $('#addfuncpanel')
 
@@ -60,6 +65,10 @@ var nowchatid
 // context info
 var friendinfobox = $('#friendinfobox')
 var groupinfobox = $('#groupinfobox')
+
+// todo idea
+var todobox = $('#todobox')
+var ideabox = $('#ideabox')
 
 $(function() {
     // animations

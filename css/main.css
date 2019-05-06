@@ -496,3 +496,93 @@ form .fa-times {
   text-align: center;
   margin-right: 4px;
 }
+
+/* todo & idea*/
+#todobox,
+#ideabox {
+  position: fixed;
+  right: -100%;
+  top: 8%;
+  width: 100%;
+  height: 82%;
+  background-color: #eee;
+
+  opacity: 0;
+  overflow: hidden;
+}
+
+/* todo */
+
+#todocatebox {
+  width: 100%;
+  height: 6%;
+  margin: auto !important;
+}
+
+#ingbtn,
+#donebtn,
+#failedbtn {
+  float: left;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: Center;
+}
+
+#ingbtn {
+  background-color: #2ba3ee;
+  color: white;
+}
+
+#donebtn {
+  background-color: #32ee2b;
+  color: white;
+}
+
+#failedbtn {
+  background-color: #888888;
+  color: white;
+}
+
+.co {
+  margin: auto;
+  display: inline-block;
+  position: absolute;
+  bottom: -7px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#ingbtn .co {
+  border-style: solid;
+  border-width: 7px 7px 0px 7px;
+  border-color: #2ba3ee transparent transparent transparent;
+  width: 0px;
+  height: 0px;
+}
+
+#donebtn .co {
+  border-style: solid;
+  border-width: 7px 7px 0px 7px;
+  border-color: #32ee2b transparent transparent transparent;
+  width: 0px;
+  height: 0px;
+}
+
+#failedbtn .co {
+  border-style: solid;
+  border-width: 7px 7px 0px 7px;
+  border-color: #888888 transparent transparent transparent;
+  width: 0px;
+  height: 0px;
+}
+
+.cohide{
+  border-width: 10px 0px 0px 0px !important;
+  opacity: 0;
+}
+
+#todolist {
+  width: 100%;
+  height: 94%;
+}
