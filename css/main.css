@@ -629,6 +629,10 @@ form .fa-times {
   width: 92%;
 }
 
+#ideainfobox form {
+  overflow: auto;
+}
+
 .xdsoft_datetimepicker {
   margin: .5rem auto;
   left: 0 !important;

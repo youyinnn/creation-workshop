@@ -158,6 +158,8 @@ function present_context() {
         })
     }
     let gs = get_someone_group_list(loginid)
+    let addil = $('#addil')
+    addil.children().remove()
     for (let i = 0; i < gs.length; i++) {
         let gi = c('div')
         adclass(gi, 'contextitem')
@@ -180,6 +182,9 @@ function present_context() {
                 }
             })
         })
+        let gis = c('option')
+        gis.innerText = gs[i].gname
+        appendc(addil[0], gis)
     }
 }
 
@@ -410,13 +415,22 @@ function present_idea() {
             $('#ideatitle, #newideatitle').val(td.title)
             $('#ideastarttime, #newideastarttime').val(dayjs(td.starttime).format('YYYY/MM/DD HH:mm'))
             let ilbox = $('#ilbox')
+            let newilbox = $('#newilbox')
             ilbox.children().remove()
+            newilbox.children().remove()
             let g = td.linkedgroup
             for (let j = 0; j < g.length; j++) {
                 let gn = c('span')
                 gn.innerText = sch('gredb', g[j]).gname
                 adclass(gn, 'badge badge-success m-1')
+                let gn2 = c('span')
+                gn2.innerText = sch('gredb', g[j]).gname
+                adclass(gn2, 'badge badge-danger m-1')
                 appendc(ilbox[0], gn)
+                appendc(newilbox[0], gn2)
+                $(gn2).click(function() {
+                    $(gn2).remove()
+                })
                 $(gn).click(function() {
                     show_group_info(g[j], {
                         leftlogo: 'angle-left',
@@ -446,7 +460,6 @@ function present_idea() {
                     })
                 })
             }
-            // $('#ilbox, #newilbox').val(td.title)
             $('#ideadetail, #newideadetail').val(td.detail)
         })
     }

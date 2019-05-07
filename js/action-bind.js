@@ -169,6 +169,7 @@ $(function() {
             present_undone_todo()
         }
     })
+    // todo update
     $('#todoinfoboxpanel .infoupdbtn.btn.btn-dark').click(function() {
         $('#todoinfoboxpanel').addClass('hidepanel')
         $('#newtodoinfoboxpanel').removeClass('hidepanel')
@@ -188,7 +189,6 @@ $(function() {
         $('#todoinfoboxpanel').removeClass('hidepanel')
         $('#newtodoinfoboxpanel').addClass('hidepanel')
     })
-    // todo update
     $('#newtodosubmit').click(function() {
         update_todo(
             $('#newtodotitle').val(),
@@ -207,6 +207,17 @@ $(function() {
         setTimeout(() => {
             $('#newtodoreturn').click()
         }, 600);
+    })
+    // idea update
+    $('#ideainfoboxpanel .infoupdbtn.btn.btn-dark').click(function() {
+        $('#ideainfoboxpanel').addClass('hidepanel')
+        $('#newideainfoboxpanel').removeClass('hidepanel')
+
+        let st = $('#newideastarttime').val().split(' ')
+        $('#newideastarttime').datetimepicker({
+            defaultDate: st[0],
+            defaultTime: st[1]
+        })
     })
 
     // send box

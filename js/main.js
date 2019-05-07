@@ -232,8 +232,6 @@ function show_idea_box(panel) {
     ideabox.css('right', '0')
     ideabox.css('opacity', '1')
     nowsubpanel.css('opacity', '0')
-    // need_left_function('angle-left', hide_idea_box)
-    // need_right_function('plus-square-o', new_idea)
     show_head_btn_if_need(panel)
 }
 
@@ -249,7 +247,6 @@ function show_idea_info_box(panel) {
     ideainfobox.css('right', '0')
     ideainfobox.css('opacity', '1')
     ideabox.css('opacity', '0')
-    // need_left_function('angle-left', hide_idea_info_box)
     show_head_btn_if_need(panel)
 }
 
@@ -258,8 +255,6 @@ function hide_idea_info_box(panel) {
     ideainfobox.css('opacity', '0')
     ideabox.css('opacity', '1')
     reset_head_title()
-    // need_left_function('angle-left', hide_idea_box)
-    // need_right_function('plus-square-o', new_idea)
     show_head_btn_if_need(panel)
 }
 
