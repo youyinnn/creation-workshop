@@ -655,3 +655,11 @@ function get_addil_group_list() {
     }
     return rs
 }
+
+function show_hide_add_funcbtn() {
+    if (addfuncpanel.hasClass('hidepanel')) {
+        show_panel_2(addfuncpanel)
+    } else {
+        hide_panel_2(addfuncpanel)
+    }
+}

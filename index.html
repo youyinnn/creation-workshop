@@ -153,7 +153,7 @@
                             <button type="submit" class="btn btn-sm btn-success">提交</button>
                         </div>
                     </form>
-                    <div id="mefuncbox" class="btn-group" role="group" aria-label="Basic example">
+                    <div class="btn-group mefuncbox" role="group" aria-label="Basic example">
                         <button id="todobtn" type="button" class="mefunbtn btn btn-sm btn-success">待办</button>
                         <button id="ideabtn" type="button" class="mefunbtn btn btn-sm btn-primary">点子</button>
                         <button id="logoutbtn" type="button" class="mefunbtn btn btn-sm btn-danger" onclick="logout()">登出</button>
@@ -210,7 +210,7 @@
         </div>
 
         <div id="friendinfobox">
-            <form id="friendinfoboxpanel" class="unselectable">
+            <form id="friendinfoboxpanel" class="subpanel unselectable">
                 <h5 id="fnickname"></h5>
                 <div class="form-group">
                     <label>账号</label>
@@ -224,14 +224,14 @@
                     <label>个人简介</label>
                     <textarea id="fintro" type="text" class="form-control form-control-sm" maxlength="160" rows="5" disabled></textarea>
                 </div>
-                <div class="infoboxbtnbox btn-group" role="group">
-                    <button id="delfbtn" type="button" class="btn btn-sm btn-danger ">删除</button>
-                    <button id="chatfbtn" type="button" class="btn btn-sm btn-primary ">消息</button>
+                <div class="mefuncbox btn-group" role="group">
+                    <button id="delfbtn" type="button" class="mefunbtn btn btn-sm btn-danger ">删除</button>
+                    <button id="chatfbtn" type="button" class="mefunbtn btn btn-sm btn-primary ">消息</button>
                 </div>
             </form>
         </div>
         <div id="groupinfobox">
-            <form id="groupinfoboxpanel" class="unselectable">
+            <form id="groupinfoboxpanel" class="subpanel unselectable">
                 <h5 id="gname"></h5>
                 <div class="form-group">
                     <label id="gmblb"></label>
@@ -243,9 +243,9 @@
                     <textarea id="gintro" type="text" class="form-control form-control-sm" maxlength="160" rows="5" disabled>
                     </textarea>
                 </div>
-                <div class="infoboxbtnbox btn-group" role="group">
-                    <button id="quetgbtn" type="button" class="btn btn-sm btn-danger ">退出</button>
-                    <button id="chatgbtn" type="button" class="btn btn-sm btn-primary ">消息</button>
+                <div class="mefuncbox btn-group" role="group">
+                    <button id="quetgbtn" type="button" class="mefunbtn btn btn-sm btn-danger ">退出</button>
+                    <button id="chatgbtn" type="button" class="mefunbtn btn btn-sm btn-primary ">消息</button>
                 </div>
             </form>
         </div>
@@ -288,9 +288,9 @@
                     <textarea id="tododetail" type="text" class="form-control form-control-sm" maxlength="160" rows="2" disabled></textarea>
                 </div>
                 <button type="button" class="infoupdbtn btn btn-sm btn-dark">修改</button>
-                <div class="infoboxbtnbox btn-group" role="group">
-                    <button id="deletodo" type="button" class="btn btn-sm btn-danger ">删除</button>
-                    <button id="finishtodo" type="button" class="btn btn-sm btn-primary ">完成</button>
+                <div class="mefuncbox btn-group" role="group">
+                    <button id="deletodo" type="button" class="mefunbtn btn btn-sm btn-danger ">删除</button>
+                    <button id="finishtodo" type="button" class="mefunbtn btn btn-sm btn-primary ">完成</button>
                 </div>
             </form>
             <form id="newtodoinfoboxpanel" class="subpanel unselectable hidepanel">
@@ -319,7 +319,9 @@
         </div>
 
         <div id="ideabox">
+            <div id="idealist">
 
+            </div>
         </div>
         <div id="ideainfobox">
             <form id="ideainfoboxpanel" class="subpanel unselectable">
@@ -359,10 +361,10 @@
                     </div>
                 </div>
                 <div class="form-group input-group">
-                    <select class="form-control form-control-sm" id="addil">
+                    <select class="form-control form-control-sm mr-1" id="addil">
 
                     </select>
-                    <button id="addilbtn" type="button" class="btn btn-sm btn-primary mb-2">添加小组</button>
+                    <button id="addilbtn" type="button" class="ml-1 btn btn-sm btn-primary mb-2">添加小组</button>
                 </div>
                 <div class="form-group mb-3">
                     <label>详细内容</label>

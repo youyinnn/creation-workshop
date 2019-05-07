@@ -368,7 +368,7 @@ function present_undone_todo() {
 }
 
 function present_idea() {
-    ideabox.children().remove()
+    idealist.children().remove()
     let rs = get_related_idea()
     for (let i = 0; i < rs.length; i++) {
         let td = rs[i].idea
@@ -392,7 +392,7 @@ function present_idea() {
         appendc(itc, ihead)
         appendc(itc, ibody)
         appendc(it, itfunc)
-        appendc(ideabox[0], it)
+        appendc(idealist[0], it)
 
         $(itfunc).click(function() {
             remove_idea_item(this)
@@ -434,6 +434,8 @@ function present_idea() {
                     $(gn2).remove()
                 })
                 $(gn).click(function() {
+                    nowchatwith = 'g'
+                    nowchatid = g[j]
                     show_group_info(g[j], {
                         leftlogo: 'angle-left',
                         leftfunc: function() {

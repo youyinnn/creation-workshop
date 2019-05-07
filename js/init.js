@@ -18,8 +18,9 @@ mesubpanel.outfunc = function() {
     ideainfobox.css('right', '-100%')
     ideainfobox.css('opacity', '0')
 
+    hide_group_info_box()
+    
     reset_head_title()
-    hide_idea_box()
     get_infosubpanel_up(infosubpanel)
     formVreset('#infoupdsubpanel')
 }
@@ -76,6 +77,7 @@ var todoinfobox = $('#todoinfobox')
 var ideabox = $('#ideabox')
 var ideainfobox = $('#ideainfobox')
 var todolist = $('#todolist')
+var idealist = $('#idealist')
 var nowtodoindex
 var nowideaindex
 

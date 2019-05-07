@@ -9,13 +9,7 @@ $(function() {
     $('#chatbtn').click(function() {
         if (!$('#chatbtn').hasClass('active')) {
             hide_leftbtn()
-            need_right_function('plus-square-o', function() {
-                if (addfuncpanel.hasClass('hidepanel')) {
-                    show_panel_2(addfuncpanel)
-                } else {
-                    hide_panel_2(addfuncpanel)
-                }
-            })
+            need_right_function('plus-square-o', show_hide_add_funcbtn)
             get_subpanel_up(chatsubpanel)
         }
     })
@@ -119,6 +113,18 @@ $(function() {
         if (!$('#addfuncpanel').hasClass('hidepanel')) {
             hide_panel_2(addfuncpanel)
         }
+    })
+    $('#addidea').click(function() {
+        new_idea(undefined, {
+            rightlogo: 'plus-square-o',
+            rightfunc: show_hide_add_funcbtn
+        })
+    })
+    $('#addtodo').click(function() {
+        new_todo(undefined, {
+            rightlogo: 'plus-square-o',
+            rightfunc: show_hide_add_funcbtn
+        })
     })
 
     // todo & idea
