@@ -468,7 +468,7 @@ form .fa-times {
 .infoboxbtnbox {
   width: 87%;
   position: fixed !important;
-  bottom: 15%;
+  /* bottom: 15%; */
 }
 
 .infoboxbtnbox button {
