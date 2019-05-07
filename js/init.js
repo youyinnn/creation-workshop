@@ -14,6 +14,10 @@ mesubpanel.outfunc = function() {
     hide_todo_box()
     todoinfobox.css('right', '-100%')
     todoinfobox.css('opacity', '0')
+    hide_idea_box()
+    ideainfobox.css('right', '-100%')
+    ideainfobox.css('opacity', '0')
+
     reset_head_title()
     hide_idea_box()
     get_infosubpanel_up(infosubpanel)
@@ -73,6 +77,7 @@ var ideabox = $('#ideabox')
 var ideainfobox = $('#ideainfobox')
 var todolist = $('#todolist')
 var nowtodoindex
+var nowideaindex
 
 $(function() {
     // animations

@@ -194,8 +194,62 @@ function new_todo(spanel, hpanel) {
     })
 }
 
-function new_idea() {
-    console.log(123)
+function new_idea(spanel, hpanel) {
+    show_idea_info_box(spanel)
+
+    $('#ideainfoboxpanel').addClass('hidepanel')
+    $('#newideainfoboxpanel').removeClass('hidepanel')
+
+    $('#newideatitle').val('')
+    $('#newideastarttime').val('')
+    $('#newilbox').children().remove()
+    $('#newideadetail').val('')
+
+    $('#newideareturn').unbind('click')
+    $('#newideareturn').click(function() {
+        hide_idea_info_box(hpanel)
+        $('#ideainfoboxpanel').removeClass('hidepanel')
+        $('#newideainfoboxpanel').addClass('hidepanel')
+
+        $('#newideareturn').unbind('click')
+        $('#newideareturn').click(function() {
+            $('#ideainfoboxpanel').removeClass('hidepanel')
+            $('#newideainfoboxpanel').addClass('hidepanel')
+        })
+    })
+
+    $('#newideasubmit').unbind('click')
+    $('#newideasubmit').click(function() {
+        add_idea(
+            $('#newideatitle').val(),
+            $('#newideastarttime').datetimepicker('getValue').getTime(),
+            $('#newideadetail').val(),
+            get_addil_group_list()
+        )
+        present_idea()
+        setTimeout(() => {
+            $('#newideareturn').click()
+        }, 400);
+
+        $('#newideasubmit').unbind('click')
+        $('#newideasubmit').click(function() {
+            update_idea(
+                nowideaindex,
+                $('#newideatitle').val(),
+                $('#newideastarttime').datetimepicker('getValue').getTime(),
+                $('#newideadetail').val(),
+                get_addil_group_list()
+            )
+            $('#ideatitle').val($('#newideatitle').val())
+            $('#ideastarttime').val(dayjs($('#newideastarttime').datetimepicker('getValue').getTime()).format('YYYY/MM/DD HH:mm'))
+            $('#ideadetail').val($('#newideadetail').val())
+            $('#ilbox')[0].innerHTML = $('#newilbox')[0].innerHTML
+            present_idea()
+            setTimeout(() => {
+                $('#newideareturn').click()
+            }, 400);
+        })
+    })
 }
 
 function show_todo_box(panel) {
@@ -304,6 +358,7 @@ function just_login() {
     if (!f) {
         $('#newtodostarttime').datetimepicker()
         $('#newtodofinishtime').datetimepicker()
+        $('#newideastarttime').datetimepicker()
         f = true
     }
 }
@@ -578,11 +633,25 @@ function show_group_info(gid, spanel, cpanel, hpanel) {
     for (let i = 0; i < gmb.length; i++) {
         let mb = c('span')
         mb.innerText = gmb[i].nickname
-        adclass(mb, 'badge badge-success m-1')
+        adclass(mb, 'badge badge-primary m-1')
         appendc(gmbbox[0], mb)
     }
     $('#chatgbtn').unbind('click')
     $('#chatgbtn').click(function() {
         get_chat_log_up(g.gname, 'g', g.gid, cpanel)
     })
+}
+
+// idea update
+function get_addil_group_list() {
+    let have = $('#newilbox')[0].innerText
+    let all = $('#addil').find('option')
+    let rs = new Array()
+    for (let i = 0; i < all.length; i++) {
+        let it = all[i]
+        if (have.search(it.getAttribute('gname')) !== -1) {
+            rs.push(parseInt(it.getAttribute('gid')))
+        }
+    }
+    return rs
 }

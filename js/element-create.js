@@ -184,6 +184,8 @@ function present_context() {
         })
         let gis = c('option')
         gis.innerText = gs[i].gname
+        gis.setAttribute('gname', gs[i].gname)
+        gis.setAttribute('gid', gs[i].gid)
         appendc(addil[0], gis)
     }
 }
@@ -423,10 +425,10 @@ function present_idea() {
                 let gn = c('span')
                 gn.innerText = sch('gredb', g[j]).gname
                 adclass(gn, 'badge badge-success m-1')
+                appendc(ilbox[0], gn)
                 let gn2 = c('span')
                 gn2.innerText = sch('gredb', g[j]).gname
-                adclass(gn2, 'badge badge-danger m-1')
-                appendc(ilbox[0], gn)
+                adclass(gn2, 'badge badge-success m-1')
                 appendc(newilbox[0], gn2)
                 $(gn2).click(function() {
                     $(gn2).remove()
@@ -461,6 +463,7 @@ function present_idea() {
                 })
             }
             $('#ideadetail, #newideadetail').val(td.detail)
+            nowideaindex = i
         })
     }
 }

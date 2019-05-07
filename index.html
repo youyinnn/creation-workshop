@@ -27,16 +27,16 @@
                     <label for="username">用&nbsp;户&nbsp;名</label>
                     <i class="fa fa-check" aria-hidden="true" input-va="username"></i>
                     <i class="fa fa-times" aria-hidden="true" input-va="username"></i>
-                    <input name="username" type="text" class="form-control" id="username" autocomplete="off" notnull>
+                    <input name="username" type="text" class="form-control form-control-sm" id="username" autocomplete="off" notnull>
                 </div>
                 <div class="form-group">
                     <label for="password">密&nbsp;&nbsp;码</label>
                     <i class="fa fa-check" aria-hidden="true" input-va="password"></i>
                     <i class="fa fa-times" aria-hidden="true" input-va="password"></i>
-                    <input name="password" type="password" class="form-control" id="password" notnull>
+                    <input name="password" type="password" class="form-control form-control-sm" id="password" notnull>
                 </div>
-                <button id="loginbtn" type="submit" class="btn btn-warning">登&nbsp;&nbsp;陆</button>
-                <button id="signinbtn" type="button" class="mt-3 btn btn-light">注&nbsp;&nbsp;册</button>
+                <button id="loginbtn" type="submit" class="btn btn-sm btn-warning">登&nbsp;&nbsp;陆</button>
+                <button id="signinbtn" type="button" class="mt-3 btn btn-sm btn-light">注&nbsp;&nbsp;册</button>
             </form>
         </div>
     </div>
@@ -48,28 +48,28 @@
                     <label for="newusername">用&nbsp;户&nbsp;名</label>
                     <i class="fa fa-check" aria-hidden="true" input-va="newusername"></i>
                     <i class="fa fa-times" aria-hidden="true" input-va="newusername"></i>
-                    <input name="newusername" type="text" class="form-control" id="newusername" autocomplete="off" pt="^([A-Z]|[a-z]|[0-9]){8,16}$" unvmsg="请输入8-16位纯大小写字母或者数字" notnull minlength="8" maxlength="16">
+                    <input name="newusername" type="text" class="form-control form-control-sm" id="newusername" autocomplete="off" pt="^([A-Z]|[a-z]|[0-9]){8,16}$" unvmsg="请输入8-16位纯大小写字母或者数字" notnull minlength="8" maxlength="16">
                 </div>
                 <div class="form-group">
                     <label for="email1">邮&nbsp;&nbsp;箱</label>
                     <i class="fa fa-check" aria-hidden="true" input-va="email1"></i>
                     <i class="fa fa-times" aria-hidden="true" input-va="email1"></i>
-                    <input name="email1" type="email" class="form-control" id="email1" aria-describedby="emailHelp" autocomplete="off" pt="(\d|\w)+@(\d|\w)+\.(\d|\w)+" unvmsg="请输入正确的邮箱格式" maxlength="30">
+                    <input name="email1" type="email" class="form-control form-control-sm" id="email1" aria-describedby="emailHelp" autocomplete="off" pt="(\d|\w)+@(\d|\w)+\.(\d|\w)+" unvmsg="请输入正确的邮箱格式" maxlength="30">
                 </div>
                 <div class="form-group">
                     <label for="newpassword1">密&nbsp;&nbsp;码</label>
                     <i class="fa fa-check" aria-hidden="true" input-va="newpassword1"></i>
                     <i class="fa fa-times" aria-hidden="true" input-va="newpassword1"></i>
-                    <input name="newpassword1" type="password" class="form-control" id="newpassword1" notnull minlength="1" maxlength="15" mute="fasle" autocomplete="off">
+                    <input name="newpassword1" type="password" class="form-control form-control-sm" id="newpassword1" notnull minlength="1" maxlength="15" mute="fasle" autocomplete="off">
                 </div>
                 <div class="form-group">
                     <label for="newpassword2">确&nbsp;认&nbsp;密&nbsp;码</label>
                     <i class="fa fa-check" aria-hidden="true" input-va="newpassword2"></i>
                     <i class="fa fa-times" aria-hidden="true" input-va="newpassword2"></i>
-                    <input name="newpassword2" type="password" class="form-control" id="newpassword2" notnull minlength="1" maxlength="15" mute="fasle" autocomplete="off">
+                    <input name="newpassword2" type="password" class="form-control form-control-sm" id="newpassword2" notnull minlength="1" maxlength="15" mute="fasle" autocomplete="off">
                 </div>
-                <button id="signinsubmit" type="submit" class="btn btn-secondary">提&nbsp;交&nbsp;注&nbsp;册</button>
-                <button id="signinreturn" type="button" class="mt-3 btn btn-light">返&nbsp;&nbsp;回</button>
+                <button id="signinsubmit" type="submit" class="btn btn-sm btn-secondary">提&nbsp;交&nbsp;注&nbsp;册</button>
+                <button id="signinreturn" type="button" class="mt-3 btn btn-sm btn-light">返&nbsp;&nbsp;回</button>
             </form>
         </div>
     </div>
@@ -108,21 +108,21 @@
                         <h5>个人信息</h5>
                         <div class="form-group">
                             <label for="infousername">账号</label>
-                            <input id="infousername" type="text" class="form-control form-control-sm" disabled>
+                            <input id="infousername" type="text" class="form-control form-control-sm form-control form-control-sm-sm" disabled>
                         </div>
                         <div class="form-group">
                             <label for="infousername">昵称</label>
-                            <input id="infonickname" type="text" class="form-control form-control-sm" disabled>
+                            <input id="infonickname" type="text" class="form-control form-control-sm form-control form-control-sm-sm" disabled>
                         </div>
                         <div class="form-group">
                             <label for="infousername">邮箱</label>
-                            <input id="infoemail" type="text" class="form-control form-control-sm" disabled>
+                            <input id="infoemail" type="text" class="form-control form-control-sm form-control form-control-sm-sm" disabled>
                         </div>
                         <div class="form-group">
                             <label for="infousername">个人简介</label>
-                            <textarea id="infointro" type="text" class="form-control form-control-sm" disabled rows="4"></textarea>
+                            <textarea id="infointro" type="text" class="form-control form-control-sm form-control form-control-sm-sm" disabled rows="4"></textarea>
                         </div>
-                        <button type="button" class="infoupdbtn btn btn-dark" onclick="get_infosubpanel_up(infoupdsubpanel)">修改</button>
+                        <button type="button" class="infoupdbtn btn btn-sm btn-dark" onclick="get_infosubpanel_up(infoupdsubpanel)">修改</button>
                     </form>
                     <form id="infoupdsubpanel" class="subpanel unselectable hidepanel">
                         <h5>修改信息</h5>
@@ -130,33 +130,33 @@
                             <label for="newinfonickname">昵称</label>
                             <i class="fa fa-check" aria-hidden="true" input-va="newinfonickname"></i>
                             <i class="fa fa-times" aria-hidden="true" input-va="newinfonickname"></i>
-                            <input name="newinfonickname" id="newinfonickname" type="text" class="form-control form-control-sm" autocomplete="off" pt="^([A-Z]|[a-z]|[0-9]){8,16}$" unvmsg="请输入8-16位纯大小写字母或者数字" notnull minlength="8" maxlength="16">
+                            <input name="newinfonickname" id="newinfonickname" type="text" class="form-control form-control-sm form-control form-control-sm-sm" autocomplete="off" pt="^([A-Z]|[a-z]|[0-9]){8,16}$" unvmsg="请输入8-16位纯大小写字母或者数字" notnull minlength="8" maxlength="16">
                         </div>
                         <div class="form-group">
                             <label for="newinfopassword">密码</label>
                             <i class="fa fa-check" aria-hidden="true" input-va="newinfopassword"></i>
                             <i class="fa fa-times" aria-hidden="true" input-va="newinfopassword"></i>
-                            <input name="newinfopassword" id="newinfopassword" type="password" class="form-control form-control-sm" notnull minlength="1" maxlength="15" mute="fasle" autocomplete="off">
+                            <input name="newinfopassword" id="newinfopassword" type="password" class="form-control form-control-sm form-control form-control-sm-sm" notnull minlength="1" maxlength="15" mute="fasle" autocomplete="off">
                         </div>
                         <div class="form-group">
                             <label for="newinfoemail">邮箱</label>
                             <i class="fa fa-check" aria-hidden="true" input-va="newinfoemail"></i>
                             <i class="fa fa-times" aria-hidden="true" input-va="newinfoemail"></i>
-                            <input name="newinfoemail" id="newinfoemail" type="email" class="form-control form-control-sm" autocomplete="off" pt="(\d|\w)+@(\d|\w)+\.(\d|\w)+" unvmsg="请输入正确的邮箱格式" maxlength="30">
+                            <input name="newinfoemail" id="newinfoemail" type="email" class="form-control form-control-sm form-control form-control-sm-sm" autocomplete="off" pt="(\d|\w)+@(\d|\w)+\.(\d|\w)+" unvmsg="请输入正确的邮箱格式" maxlength="30">
                         </div>
                         <div class="form-group">
                             <label for="newinfointro">个人简介</label>
-                            <textarea name="newinfointro" id="newinfointro" type="text" class="form-control form-control-sm" maxlength="160" rows="4"></textarea>
+                            <textarea name="newinfointro" id="newinfointro" type="text" class="form-control form-control-sm form-control form-control-sm-sm" maxlength="160" rows="4"></textarea>
                         </div>
                         <div class="infoupdbtn btn-group" role="group" aria-label="Basic example">
-                            <button type="button" class="btn btn-secondary" onclick="mesubpanel.outfunc()">返回</button>
-                            <button type="submit" class="btn btn-success">提交</button>
+                            <button type="button" class="btn btn-sm btn-secondary" onclick="mesubpanel.outfunc()">返回</button>
+                            <button type="submit" class="btn btn-sm btn-success">提交</button>
                         </div>
                     </form>
                     <div id="mefuncbox" class="btn-group" role="group" aria-label="Basic example">
-                        <button id="todobtn" type="button" class="mefunbtn btn btn-success">待办</button>
-                        <button id="ideabtn" type="button" class="mefunbtn btn btn-primary">点子</button>
-                        <button id="logoutbtn" type="button" class="mefunbtn btn btn-danger" onclick="logout()">登出</button>
+                        <button id="todobtn" type="button" class="mefunbtn btn btn-sm btn-success">待办</button>
+                        <button id="ideabtn" type="button" class="mefunbtn btn btn-sm btn-primary">点子</button>
+                        <button id="logoutbtn" type="button" class="mefunbtn btn btn-sm btn-danger" onclick="logout()">登出</button>
                     </div>
                 </div>
             </div>
@@ -214,19 +214,19 @@
                 <h5 id="fnickname"></h5>
                 <div class="form-group">
                     <label>账号</label>
-                    <input id="fusername" type="text" class="form-control" disabled>
+                    <input id="fusername" type="text" class="form-control form-control-sm" disabled>
                 </div>
                 <div class="form-group">
                     <label>邮箱</label>
-                    <input id="femail" type="email" class="form-control" disabled>
+                    <input id="femail" type="email" class="form-control form-control-sm" disabled>
                 </div>
                 <div class="form-group mb-3">
                     <label>个人简介</label>
-                    <textarea id="fintro" type="text" class="form-control" maxlength="160" rows="5" disabled></textarea>
+                    <textarea id="fintro" type="text" class="form-control form-control-sm" maxlength="160" rows="5" disabled></textarea>
                 </div>
                 <div class="infoboxbtnbox btn-group" role="group">
-                    <button id="delfbtn" type="button" class="btn btn-danger btn-sm">删除</button>
-                    <button id="chatfbtn" type="button" class="btn btn-primary btn-sm">消息</button>
+                    <button id="delfbtn" type="button" class="btn btn-sm btn-danger ">删除</button>
+                    <button id="chatfbtn" type="button" class="btn btn-sm btn-primary ">消息</button>
                 </div>
             </form>
         </div>
@@ -235,17 +235,17 @@
                 <h5 id="gname"></h5>
                 <div class="form-group">
                     <label id="gmblb"></label>
-                    <div id="gmbbox" type="text" class="form-control" maxlength="160" rows="5" disabled>
+                    <div id="gmbbox" type="text" class="form-control form-control-sm" maxlength="160" rows="5" disabled>
                     </div>
                 </div>
                 <div class="form-group mb-3">
                     <label>群简介</label>
-                    <textarea id="gintro" type="text" class="form-control" maxlength="160" rows="5" disabled>
+                    <textarea id="gintro" type="text" class="form-control form-control-sm" maxlength="160" rows="5" disabled>
                     </textarea>
                 </div>
                 <div class="infoboxbtnbox btn-group" role="group">
-                    <button id="quetgbtn" type="button" class="btn btn-danger btn-sm">退出</button>
-                    <button id="chatgbtn" type="button" class="btn btn-primary btn-sm">消息</button>
+                    <button id="quetgbtn" type="button" class="btn btn-sm btn-danger ">退出</button>
+                    <button id="chatgbtn" type="button" class="btn btn-sm btn-primary ">消息</button>
                 </div>
             </form>
         </div>
@@ -273,47 +273,47 @@
                 <h5>待办信息</h5>
                 <div class="form-group">
                     <label>标题</label>
-                    <input id="todotitle" type="text" class="form-control" disabled>
+                    <input id="todotitle" type="text" class="form-control form-control-sm" disabled>
                 </div>
                 <div class="form-group">
                     <label>开始时间</label>
-                    <input id="todostarttime" type="text" class="form-control" disabled>
+                    <input id="todostarttime" type="text" class="form-control form-control-sm" disabled>
                 </div>
                 <div class="form-group">
                     <label>截止时间</label>
-                    <input id="todofinishtime" type="email" class="form-control" disabled>
+                    <input id="todofinishtime" type="email" class="form-control form-control-sm" disabled>
                 </div>
                 <div class="form-group mb-3">
                     <label>详细内容</label>
-                    <textarea id="tododetail" type="text" class="form-control" maxlength="160" rows="2" disabled></textarea>
+                    <textarea id="tododetail" type="text" class="form-control form-control-sm" maxlength="160" rows="2" disabled></textarea>
                 </div>
-                <button type="button" class="infoupdbtn btn btn-dark">修改</button>
+                <button type="button" class="infoupdbtn btn btn-sm btn-dark">修改</button>
                 <div class="infoboxbtnbox btn-group" role="group">
-                    <button id="deletodo" type="button" class="btn btn-danger btn-sm">删除</button>
-                    <button id="finishtodo" type="button" class="btn btn-primary btn-sm">完成</button>
+                    <button id="deletodo" type="button" class="btn btn-sm btn-danger ">删除</button>
+                    <button id="finishtodo" type="button" class="btn btn-sm btn-primary ">完成</button>
                 </div>
             </form>
             <form id="newtodoinfoboxpanel" class="subpanel unselectable hidepanel">
                 <h5>待办信息</h5>
                 <div class="form-group">
                     <label>标题</label>
-                    <input id="newtodotitle" type="text" class="form-control">
+                    <input id="newtodotitle" type="text" class="form-control form-control-sm">
                 </div>
                 <div class="form-group">
                     <label>开始时间</label>
-                    <input id="newtodostarttime" type="text" class="form-control">
+                    <input id="newtodostarttime" type="text" class="form-control form-control-sm">
                 </div>
                 <div class="form-group">
                     <label>截止时间</label>
-                    <input id="newtodofinishtime" type="email" class="form-control">
+                    <input id="newtodofinishtime" type="email" class="form-control form-control-sm">
                 </div>
                 <div class="form-group mb-3">
                     <label>详细内容</label>
-                    <textarea id="newtododetail" type="text" class="form-control" maxlength="160" rows="4"></textarea>
+                    <textarea id="newtododetail" type="text" class="form-control form-control-sm" maxlength="160" rows="4"></textarea>
                 </div>
                 <div class="infoupdbtn btn-group" role="group" aria-label="Basic example">
-                    <button id="newtodoreturn" type="button" class="btn btn-secondary">返回</button>
-                    <button id="newtodosubmit" type="button" class="btn btn-success">提交</button>
+                    <button id="newtodoreturn" type="button" class="btn btn-sm btn-secondary">返回</button>
+                    <button id="newtodosubmit" type="button" class="btn btn-sm btn-success">提交</button>
                 </div>
             </form>
         </div>
@@ -326,58 +326,58 @@
                 <h5>点子信息</h5>
                 <div class="form-group">
                     <label>标题</label>
-                    <input id="ideatitle" type="text" class="form-control" disabled>
+                    <input id="ideatitle" type="text" class="form-control form-control-sm" disabled>
                 </div>
                 <div class="form-group">
                     <label>开始时间</label>
-                    <input id="ideastarttime" type="text" class="form-control" disabled>
+                    <input id="ideastarttime" type="text" class="form-control form-control-sm" disabled>
                 </div>
                 <div class="form-group">
                     <label>关联小组</label>
-                    <div id="ilbox" type="text" class="form-control" maxlength="160" rows="5" disabled>
+                    <div id="ilbox" type="text" class="form-control form-control-sm" maxlength="160" rows="5" disabled>
                     </div>
                 </div>
                 <div class="form-group mb-3">
                     <label>详细内容</label>
-                    <textarea id="ideadetail" type="text" class="form-control" maxlength="160" rows="2" disabled></textarea>
+                    <textarea id="ideadetail" type="text" class="form-control form-control-sm" maxlength="160" rows="2" disabled></textarea>
                 </div>
-                <button type="button" class="infoupdbtn btn btn-dark">修改</button>
+                <button type="button" class="infoupdbtn btn btn-sm btn-dark">修改</button>
             </form>
             <form id="newideainfoboxpanel" class="subpanel unselectable hidepanel">
-                <h5>点子信息</h5>
+                <h5>点子修改</h5>
                 <div class="form-group">
                     <label>标题</label>
-                    <input id="newideatitle" type="text" class="form-control">
+                    <input id="newideatitle" type="text" class="form-control form-control-sm">
                 </div>
                 <div class="form-group">
                     <label>开始时间</label>
-                    <input id="newideastarttime" type="text" class="form-control">
+                    <input id="newideastarttime" type="text" class="form-control form-control-sm">
                 </div>
                 <div class="form-group">
                     <label>关联小组</label>
-                    <div id="newilbox" type="text" class="form-control" maxlength="160" rows="5">
+                    <div id="newilbox" type="text" class="form-control form-control-sm" maxlength="160" rows="5">
                     </div>
                 </div>
                 <div class="form-group input-group">
-                    <select class="form-control" id="addil">
+                    <select class="form-control form-control-sm" id="addil">
 
                     </select>
-                    <button type="button" class="btn btn-primary mb-2">添加小组</button>
+                    <button id="addilbtn" type="button" class="btn btn-sm btn-primary mb-2">添加小组</button>
                 </div>
                 <div class="form-group mb-3">
                     <label>详细内容</label>
-                    <textarea id="newideadetail" type="text" class="form-control" maxlength="160" rows="2"></textarea>
+                    <textarea id="newideadetail" type="text" class="form-control form-control-sm" maxlength="160" rows="2"></textarea>
                 </div>
                 <div class="infoupdbtn btn-group" role="group" aria-label="Basic example">
-                    <button id="newideareturn" type="button" class="btn btn-secondary">返回</button>
-                    <button id="newideasubmit" type="button" class="btn btn-success">提交</button>
+                    <button id="newideareturn" type="button" class="btn btn-sm btn-secondary">返回</button>
+                    <button id="newideasubmit" type="button" class="btn btn-sm btn-success">提交</button>
                 </div>
             </form>
         </div>
 
         <div id="chatbox">
-            <textarea id="chattext" type="text" class="form-control form-control-sm" rows="1"></textarea>
-            <button id="chatsend" class="btn btn-secondary btn-sm" type="button">发送</button>
+            <textarea id="chattext" type="text" class="form-control form-control-sm form-control form-control-sm-sm" rows="1"></textarea>
+            <button id="chatsend" class="btn btn-sm btn-secondary " type="button">发送</button>
         </div>
     </div>
 

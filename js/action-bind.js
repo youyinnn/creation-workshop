@@ -219,6 +219,40 @@ $(function() {
             defaultTime: st[1]
         })
     })
+    $('#newideareturn').click(function() {
+        $('#ideainfoboxpanel').removeClass('hidepanel')
+        $('#newideainfoboxpanel').addClass('hidepanel')
+    })
+    $('#newideasubmit').click(function() {
+        update_idea(
+            nowideaindex,
+            $('#newideatitle').val(),
+            $('#newideastarttime').datetimepicker('getValue').getTime(),
+            $('#newideadetail').val(),
+            get_addil_group_list()
+        )
+        $('#ideatitle').val($('#newideatitle').val())
+        $('#ideastarttime').val(dayjs($('#newideastarttime').datetimepicker('getValue').getTime()).format('YYYY/MM/DD HH:mm'))
+        $('#ideadetail').val($('#newideadetail').val())
+        $('#ilbox')[0].innerHTML = $('#newilbox')[0].innerHTML
+        present_idea()
+        setTimeout(() => {
+            $('#newideareturn').click()
+        }, 400);
+    })
+    $('#addilbtn').click(function() {
+        if ($('#newilbox')[0].innerText.search($('#addil').val()) === -1) {
+            let newilbox = $('#newilbox')
+            let gn2 = c('span')
+            gn2.innerText = $('#addil').val()
+            adclass(gn2, 'badge badge-danger m-1')
+            appendc(newilbox[0], gn2)
+            $(gn2).click(function() {
+                $(gn2).remove()
+            })
+        }
+    })
+
 
     // send box
     $('#chatsend').click(function() {

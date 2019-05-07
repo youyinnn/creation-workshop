@@ -418,13 +418,13 @@ form .fa-times {
 
 #friendbox .contextitem {
   padding: .1rem .3rem;
-  border-left: 5px solid #17b817;
+  border-left: 5px solid #17a3b8;
   border-bottom: #92929242 solid 1px;
 }
 
 #groupbox .contextitem {
   padding: .1rem .3rem;
-  border-left: 5px solid #17a3b8;
+  border-left: 5px solid #17b817;
   border-bottom: #92929242 solid 1px;
 }
 
