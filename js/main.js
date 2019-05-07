@@ -68,23 +68,23 @@ function show_chat_box() {
     hide_buttom_bar()
 }
 
-function show_chat_log_box() {
+function show_chat_log_box(panel) {
     chatlogbox.css('right', '0')
     chatlogbox.css('opacity', '1')
+    chatlogbox.css('z-index', '2')
     nowsubpanel.css('opacity', '0')
     show_chat_box()
-    need_left_function('angle-left', hide_chat_log_box)
-    hide_rightbtn()
-    $('#chatbtn').removeClass('active')
+    show_head_btn_if_need(panel)
 }
 
-function hide_chat_log_box() {
+function hide_chat_log_box(panel) {
     chatlogbox.css('right', '-100%')
     chatlogbox.css('opacity', '0')
+    chatlogbox.css('z-index', '0')
     nowsubpanel.css('opacity', '1')
     hide_chat_box()
-    $('#chatbtn').click()
     reset_head_title()
+    show_head_btn_if_need(panel)
 }
 
 function reset_head_btn_status() {
@@ -97,42 +97,42 @@ function reset_head_btn_status() {
 }
 
 // context info
-function show_friend_info_box() {
+function show_friend_info_box(panel) {
     friendinfobox.css('right', '0')
     friendinfobox.css('opacity', '1')
     nowsubpanel.css('opacity', '0')
-    need_left_function('angle-left', hide_friend_info_box)
-    hide_rightbtn()
+    show_head_btn_if_need(panel)
 }
 
-function hide_friend_info_box() {
+function hide_friend_info_box(panel) {
     friendinfobox.css('right', '-100%')
     friendinfobox.css('opacity', '0')
     nowsubpanel.css('opacity', '1')
     reset_head_title()
-    hide_leftbtn()
+    show_head_btn_if_need(panel)
 }
 
-function show_group_info_box() {
+function show_group_info_box(panel) {
     groupinfobox.css('right', '0')
     groupinfobox.css('opacity', '1')
+    groupinfobox.css('z-index', '1')
     nowsubpanel.css('opacity', '0')
-    need_left_function('angle-left', hide_group_info_box)
-    hide_rightbtn()
+    show_head_btn_if_need(panel)
 }
 
-function hide_group_info_box() {
+function hide_group_info_box(panel) {
     groupinfobox.css('right', '-100%')
     groupinfobox.css('opacity', '0')
+    groupinfobox.css('z-index', '0')
     nowsubpanel.css('opacity', '1')
     reset_head_title()
-    hide_leftbtn()
+    show_head_btn_if_need(panel)
 }
 
 // todo & idea
 
-function new_todo() {
-    show_todo_info_box()
+function new_todo(spanel, hpanel) {
+    show_todo_info_box(spanel)
 
     $('#todoinfoboxpanel').addClass('hidepanel')
     $('#newtodoinfoboxpanel').removeClass('hidepanel')
@@ -144,7 +144,7 @@ function new_todo() {
 
     $('#newtodoreturn').unbind('click')
     $('#newtodoreturn').click(function() {
-        hide_todo_info_box()
+        hide_todo_info_box(hpanel)
         $('#todoinfoboxpanel').removeClass('hidepanel')
         $('#newtodoinfoboxpanel').addClass('hidepanel')
 
@@ -194,55 +194,86 @@ function new_todo() {
     })
 }
 
-function show_todo_box() {
+function new_idea() {
+    console.log(123)
+}
+
+function show_todo_box(panel) {
     todobox.css('right', '0')
     todobox.css('opacity', '1')
     nowsubpanel.css('opacity', '0')
-    need_left_function('angle-left', hide_todo_box)
-    need_right_function('plus-square-o', new_todo)
+    show_head_btn_if_need(panel)
 }
 
-function hide_todo_box() {
+function hide_todo_box(panel) {
     todobox.css('right', '-100%')
     todobox.css('opacity', '0')
     nowsubpanel.css('opacity', '1')
     reset_head_title()
-    hide_leftbtn()
-    hide_rightbtn()
+    show_head_btn_if_need(panel)
 }
 
-function show_todo_info_box() {
+function show_todo_info_box(panel) {
     todoinfobox.css('right', '0')
     todoinfobox.css('opacity', '1')
     todobox.css('opacity', '0')
-    need_left_function('angle-left', hide_todo_info_box)
-    hide_rightbtn()
+    show_head_btn_if_need(panel)
 }
 
-function hide_todo_info_box() {
+function hide_todo_info_box(panel) {
     todoinfobox.css('right', '-100%')
     todoinfobox.css('opacity', '0')
     todobox.css('opacity', '1')
     reset_head_title()
-    need_left_function('angle-left', hide_todo_box)
-    need_right_function('plus-square-o', new_todo)
+    show_head_btn_if_need(panel)
 }
 
-function show_idea_box() {
+function show_idea_box(panel) {
     ideabox.css('right', '0')
     ideabox.css('opacity', '1')
     nowsubpanel.css('opacity', '0')
-    need_left_function('angle-left', hide_idea_box)
-    need_right_function('plus-square-o', hide_idea_box)
+    // need_left_function('angle-left', hide_idea_box)
+    // need_right_function('plus-square-o', new_idea)
+    show_head_btn_if_need(panel)
 }
 
-function hide_idea_box() {
+function hide_idea_box(panel) {
     ideabox.css('right', '-100%')
     ideabox.css('opacity', '0')
     nowsubpanel.css('opacity', '1')
     reset_head_title()
+    show_head_btn_if_need(panel)
+}
+
+function show_idea_info_box(panel) {
+    ideainfobox.css('right', '0')
+    ideainfobox.css('opacity', '1')
+    ideabox.css('opacity', '0')
+    // need_left_function('angle-left', hide_idea_info_box)
+    show_head_btn_if_need(panel)
+}
+
+function hide_idea_info_box(panel) {
+    ideainfobox.css('right', '-100%')
+    ideainfobox.css('opacity', '0')
+    ideabox.css('opacity', '1')
+    reset_head_title()
+    // need_left_function('angle-left', hide_idea_box)
+    // need_right_function('plus-square-o', new_idea)
+    show_head_btn_if_need(panel)
+}
+
+function show_head_btn_if_need(panel) {
     hide_leftbtn()
     hide_rightbtn()
+    if (panel !== undefined) {
+        if (panel.leftlogo !== undefined) {
+            need_left_function(panel.leftlogo, panel.leftfunc)
+        }
+        if (panel.rightlogo !== undefined) {
+            need_right_function(panel.rightlogo, panel.rightfunc)
+        }
+    }
 }
 
 // login
@@ -261,6 +292,8 @@ function hide_login_form() {
     $('#loginform').css('opacity', '0')
 }
 
+var f = false
+
 function just_login() {
     get_panel_up(mainpanel)
     get_subpanel_up(chatsubpanel)
@@ -271,9 +304,13 @@ function just_login() {
     fetch_chat_list()
     present_context()
     present_ing_todo()
+    present_idea()
 
-    $('#newtodostarttime').datetimepicker()
-    $('#newtodofinishtime').datetimepicker()
+    if (!f) {
+        $('#newtodostarttime').datetimepicker()
+        $('#newtodofinishtime').datetimepicker()
+        f = true
+    }
 }
 
 function reflesh_user_info() {
@@ -359,10 +396,10 @@ function reset_head_title() {
 }
 
 // chat panel function
-function get_chat_log_up(title, cw, ci) {
+function get_chat_log_up(title, cw, ci, panel) {
     change_head_title(title)
     let g = get_chat_log_from_db(cw, ci)
-    show_chat_log_box()
+    show_chat_log_box(panel)
     present_chat_logs(g.log.msglog, cw)
 }
 
@@ -410,6 +447,18 @@ function remove_chat_item(ts) {
 }
 
 function remove_todo_item(ts) {
+    $(ts).unbind('click')
+    let p = $(ts).parent()
+    setTimeout(() => {
+        p.css('height', 0)
+        p.css('border-bottom-width', 0)
+    }, 400);
+    setTimeout(() => {
+        p.remove()
+    }, 800);
+}
+
+function remove_idea_item(ts) {
     $(ts).unbind('click')
     let p = $(ts).parent()
     setTimeout(() => {
@@ -518,4 +567,27 @@ function disable_todo_info_form() {
 function enable_todo_info_form() {
     $('#todoinfoboxpanel').children().removeAttr('disabled')
     $('#todoinfoboxpanel').children().children().removeAttr('disabled')
+}
+
+// group
+function show_group_info(gid, spanel, cpanel, hpanel) {
+    show_group_info_box(spanel)
+    let g = sch('gredb', gid)
+    $('#gname').text(g.gname)
+    $('#gintro').text(g.gintro)
+
+    let gmbbox = $('#gmbbox')
+    gmbbox.children().remove()
+    let gmb = get_group_member(g.gid)
+    $('#gmblb').text('群成员(' + gmb.length + ')')
+    for (let i = 0; i < gmb.length; i++) {
+        let mb = c('span')
+        mb.innerText = gmb[i].nickname
+        adclass(mb, 'badge badge-success m-1')
+        appendc(gmbbox[0], mb)
+    }
+    $('#chatgbtn').unbind('click')
+    $('#chatgbtn').click(function() {
+        get_chat_log_up(g.gname, 'g', g.gid, cpanel)
+    })
 }

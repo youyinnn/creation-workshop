@@ -122,13 +122,29 @@ $(function() {
     })
 
     // todo & idea
+    let loop = {
+        leftlogo: 'angle-left',
+        leftfunc: hide_todo_box,
+        rightlogo: 'plus-square-o',
+        rightfunc: function() {
+            new_todo(undefined, loop)
+        }
+    }
     $('#todobtn').click(function() {
-        show_todo_box()
+        show_todo_box(loop)
         change_head_title('待办事项')
     })
+    let loop2 = {
+        leftlogo: 'angle-left',
+        leftfunc: hide_idea_box,
+        rightlogo: 'plus-square-o',
+        rightfunc: function() {
+            new_idea(undefined, loop2)
+        }
+    }
     $('#ideabtn').click(function() {
         change_head_title('我的点子')
-        show_idea_box()
+        show_idea_box(loop2)
     })
 
     // todo
@@ -168,11 +184,12 @@ $(function() {
             defaultTime: ft[1]
         })
     })
-    $('#newtodoreturn').click(function(){
+    $('#newtodoreturn').click(function() {
         $('#todoinfoboxpanel').removeClass('hidepanel')
         $('#newtodoinfoboxpanel').addClass('hidepanel')
     })
-    $('#newtodosubmit').click(function(){
+    // todo update
+    $('#newtodosubmit').click(function() {
         update_todo(
             $('#newtodotitle').val(),
             $('#newtodostarttime').datetimepicker('getValue').getTime(),

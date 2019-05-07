@@ -67,7 +67,7 @@ function sign_in(un, em, pw1, pw2) {
         })
         ins('tododb', {
             uid: id,
-            todos:[]
+            todos: []
         })
         // sign in success
         return 1
@@ -238,4 +238,46 @@ function add_todo(tt, st, ft, dt) {
         finish: false
     })
     upd('tododb', tds.index, tds)
+}
+
+// handle idea db
+function get_related_idea() {
+    let db = sch('ideadb')
+    let rs = new Array()
+    for (let i = 0; i < db.data.length; i++) {
+        if (db.data[i].uid + '' === loginid + '') {
+            rs.push({
+                index: i,
+                idea: db.data[i].idea
+            })
+        }
+    }
+    return rs
+}
+
+function update_idea(ii, tt, st, dt, lg) {
+    upd('ideadb', ii, {
+        idea: {
+            title: tt,
+            starttime: st,
+            detail: dt,
+            linkedgroup: lg
+        }
+    })
+}
+
+function add_idea(tt, st, dt, lg) {
+    ins('ideadb', {
+        uid: loginid,
+        idea: {
+            title: tt,
+            starttime: st,
+            detail: dt,
+            linkedgroup: lg
+        }
+    })
+}
+
+function del_idea(id) {
+    del('ideadb', id)
 }

@@ -218,7 +218,29 @@ var localdb_tododb = {
     ]
 }
 
-var dbnamelist = new Array()
+var localdb_ideadb = {
+    data: [
+        {
+            uid: 0,
+            idea: {
+                title: '化学实验项目小组',
+                starttime: 1557006044009,
+                detail: '完成ABC化学实验',
+                linkedgroup: [0, 1]
+            }
+        },
+        {
+            uid: 0,
+            idea: {
+                title: '数学实考研小组',
+                starttime: 1557006944009,
+                detail: '刷题',
+                linkedgroup: [1]
+            }
+        }
+    ]
+}
+
 $(function () {
     if (localStorage['userdb'] === undefined) {
         localsave('userdb', lcoaldb_usertb)
@@ -235,6 +257,9 @@ $(function () {
     if (localStorage['tododb'] === undefined) {
         localsave('tododb', localdb_tododb)
     }
+    if (localStorage['ideadb'] === undefined) {
+        localsave('ideadb', localdb_ideadb)
+    }
 })
 
 function resetdb() {
@@ -243,5 +268,6 @@ function resetdb() {
     localremove('uredb')
     localremove('gredb')
     localremove('tododb')
+    localremove('ideadb')
     location.reload()
 }

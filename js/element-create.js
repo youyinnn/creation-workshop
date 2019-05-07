@@ -48,7 +48,14 @@ function chat_list_item(log) {
     $(clic).click(function() {
         nowchatwith = cw
         nowchatid = ci
-        get_chat_log_up(tt, cw, ci)
+        $('#chatbtn').removeClass('active')
+        get_chat_log_up(tt, cw, ci, {
+            leftlogo: 'angle-left',
+            leftfunc: function() {
+                hide_chat_log_box()
+                $('#chatbtn').click()
+            }
+        })
     })
 }
 
@@ -123,7 +130,10 @@ function present_context() {
 
         appendc(fb[0], fi)
         $(fi).click(function() {
-            show_friend_info_box()
+            show_friend_info_box({
+                leftlogo: 'angle-left',
+                leftfunc: hide_friend_info_box
+            })
             let u = sch('userdb', fs[i].id)
             $('#fnickname').text(u.nickname)
             $('#fusername').val(u.username)
@@ -138,7 +148,10 @@ function present_context() {
                     chatlogbox.css('opacity', '0')
                     nowsubpanel.css('opacity', '1')
                     hide_chat_box()
-                    show_friend_info_box()
+                    show_friend_info_box({
+                        leftlogo: 'angle-left',
+                        leftfunc: hide_friend_info_box
+                    })
                     reset_head_title()
                 })
             })
@@ -154,33 +167,17 @@ function present_context() {
         appendc(gb[0], gi)
 
         $(gi).click(function() {
-            show_group_info_box()
-            let g = sch('gredb', gs[i].gid)
-            $('#gname').text(g.gname)
-            $('#gintro').text(g.gintro)
-
-            let gmbbox = $('#gmbbox')
-            gmbbox.children().remove()
-            let gmb = get_group_member(g.gid)
-            $('#gmblb').text('群成员(' + gmb.length + ')')
-            for (let i = 0; i < gmb.length; i++) {
-                let mb = c('span')
-                mb.innerText = gmb[i].nickname
-                adclass(mb, 'badge badge-success m-1')
-                appendc(gmbbox[0], mb)
-            }
-            $('#chatgbtn').unbind('click')
-            $('#chatgbtn').click(function() {
-                hide_group_info_box()
-                get_chat_log_up(g.gname, 'g', g.gid)
-                need_left_function('angle-left', function() {
-                    chatlogbox.css('right', '-100%')
-                    chatlogbox.css('opacity', '0')
-                    nowsubpanel.css('opacity', '1')
-                    hide_chat_box()
-                    show_group_info_box()
-                    reset_head_title()
-                })
+            show_group_info(gs[i].gid, {
+                leftlogo: 'angle-left',
+                leftfunc: hide_group_info_box
+            }, {
+                leftlogo: 'angle-left',
+                leftfunc: function() {
+                    hide_chat_log_box({
+                        leftlogo: 'angle-left',
+                        leftfunc: hide_group_info_box
+                    })
+                }
             })
         })
     }
@@ -226,7 +223,20 @@ function present_ing_todo() {
         $(itc).click(function() {
             $('#todoinfoboxpanel button').removeClass('hidepanel')
             $('#tododetail').attr('rows', 2)
-            show_todo_info_box()
+            let loop = {
+                leftlogo: 'angle-left',
+                leftfunc: hide_todo_box,
+                rightlogo: 'plus-square-o',
+                rightfunc: function() {
+                    new_todo(undefined, loop)
+                }
+            }
+            show_todo_info_box({
+                leftlogo: 'angle-left',
+                leftfunc: function() {
+                    hide_todo_info_box(loop)
+                }
+            })
             change_head_title('正在进行')
             $('#todotitle, #newtodotitle').val(td.title)
             $('#todostarttime, #newtodostarttime').val(dayjs(td.starttime).format('YYYY/MM/DD HH:mm'))
@@ -235,7 +245,7 @@ function present_ing_todo() {
             $('#finishtodo').unbind('click')
             $('#finishtodo').click(function() {
                 $(itfunc).click()
-                hide_todo_info_box()
+                hide_todo_info_box(loop)
             })
             nowtodoindex = td.index
         })
@@ -271,7 +281,20 @@ function present_done_todo() {
         appendc(todolist[0], it)
 
         $(itc).click(function() {
-            show_todo_info_box()
+            let loop = {
+                leftlogo: 'angle-left',
+                leftfunc: hide_todo_box,
+                rightlogo: 'plus-square-o',
+                rightfunc: function() {
+                    new_todo(undefined, loop)
+                }
+            }
+            show_todo_info_box({
+                leftlogo: 'angle-left',
+                leftfunc: function() {
+                    hide_todo_info_box(loop)
+                }
+            })
             change_head_title('已完成')
             $('#todotitle').val(td.title)
             $('#todostarttime').val(dayjs(td.starttime).format('YYYY/MM/DD HH:mm'))
@@ -312,7 +335,20 @@ function present_undone_todo() {
         appendc(todolist[0], it)
 
         $(itc).click(function() {
-            show_todo_info_box()
+            let loop = {
+                leftlogo: 'angle-left',
+                leftfunc: hide_todo_box,
+                rightlogo: 'plus-square-o',
+                rightfunc: function() {
+                    new_todo(undefined, loop)
+                }
+            }
+            show_todo_info_box({
+                leftlogo: 'angle-left',
+                leftfunc: function() {
+                    hide_todo_info_box(loop)
+                }
+            })
             change_head_title('未完成')
             $('#todotitle').val(td.title)
             $('#todostarttime').val(dayjs(td.starttime).format('YYYY/MM/DD HH:mm'))
@@ -320,6 +356,98 @@ function present_undone_todo() {
             $('#tododetail').text(td.detail)
             $('#todoinfoboxpanel button').addClass('hidepanel')
             $('#tododetail').attr('rows', 4)
+        })
+    }
+}
+
+function present_idea() {
+    ideabox.children().remove()
+    let rs = get_related_idea()
+    for (let i = 0; i < rs.length; i++) {
+        let td = rs[i].idea
+        let it = c('div')
+        let itc = c('div')
+        let itfunc = c('div')
+        let ihead = c('div')
+        let ibody = c('div')
+
+        ihead.innerHTML = '<span>' + td.title + '</span>'
+        ibody.innerHTML = '<span>' + td.detail + '</span>'
+        itfunc.innerHTML = '<i class="fa fa-close"></i>'
+
+        adclass(it, 'chatlistitem')
+        adclass(itc, 'chatlistitemcontent')
+        adclass(ihead, 'chatlistitemhead')
+        adclass(ibody, 'chatlistitembody')
+        adclass(itfunc, 'chatlistfunbtn')
+
+        appendc(it, itc)
+        appendc(itc, ihead)
+        appendc(itc, ibody)
+        appendc(it, itfunc)
+        appendc(ideabox[0], it)
+
+        $(itfunc).click(function() {
+            remove_idea_item(this)
+            del_idea(rs[i].index)
+        })
+        $(itc).click(function() {
+            let loop2 = {
+                leftlogo: 'angle-left',
+                leftfunc: hide_idea_box,
+                rightlogo: 'plus-square-o',
+                rightfunc: function() {
+                    new_idea(undefined, loop2)
+                }
+            }
+            show_idea_info_box({
+                leftlogo: 'angle-left',
+                leftfunc: function() {
+                    hide_idea_info_box(loop2)
+                }
+            })
+            change_head_title('我的点子')
+            $('#ideatitle, #newideatitle').val(td.title)
+            $('#ideastarttime, #newideastarttime').val(dayjs(td.starttime).format('YYYY/MM/DD HH:mm'))
+            let ilbox = $('#ilbox')
+            ilbox.children().remove()
+            let g = td.linkedgroup
+            for (let j = 0; j < g.length; j++) {
+                let gn = c('span')
+                gn.innerText = sch('gredb', g[j]).gname
+                adclass(gn, 'badge badge-success m-1')
+                appendc(ilbox[0], gn)
+                $(gn).click(function() {
+                    show_group_info(g[j], {
+                        leftlogo: 'angle-left',
+                        leftfunc: function() {
+                            hide_group_info_box({
+                                leftlogo: 'angle-left',
+                                leftfunc: function() {
+                                    hide_idea_info_box(loop2)
+                                }
+                            })
+                        }
+                    }, {
+                        leftlogo: 'angle-left',
+                        leftfunc: function() {
+                            hide_chat_log_box({
+                                leftlogo: 'angle-left',
+                                leftfunc: function() {
+                                    hide_group_info_box({
+                                        leftlogo: 'angle-left',
+                                        leftfunc: function() {
+                                            hide_idea_info_box(loop2)
+                                        }
+                                    })
+                                }
+                            })
+                        }
+                    })
+                })
+            }
+            // $('#ilbox, #newilbox').val(td.title)
+            $('#ideadetail, #newideadetail').val(td.detail)
         })
     }
 }
