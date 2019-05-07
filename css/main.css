@@ -458,6 +458,7 @@ form .fa-times {
   border-radius: .5rem;
 
   height: 94%;
+  width: 92%;
 }
 
 #friendinfobox h5,
@@ -468,7 +469,7 @@ form .fa-times {
 .infoboxbtnbox {
   width: 87%;
   position: fixed !important;
-  /* bottom: 15%; */
+  bottom: 15%;
 }
 
 .infoboxbtnbox button {
