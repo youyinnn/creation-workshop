@@ -130,6 +130,8 @@ function present_context() {
 
         appendc(fb[0], fi)
         $(fi).click(function() {
+            nowchatwith = 'u'
+            nowchatid = fs[i].id
             show_friend_info_box({
                 leftlogo: 'angle-left',
                 leftfunc: hide_friend_info_box
@@ -169,6 +171,8 @@ function present_context() {
         appendc(gb[0], gi)
 
         $(gi).click(function() {
+            nowchatwith = 'g'
+            nowchatid = gs[i].gid
             show_group_info(gs[i].gid, {
                 leftlogo: 'angle-left',
                 leftfunc: hide_group_info_box
@@ -228,7 +232,7 @@ function present_ing_todo() {
             finish_todo(td.index)
         })
         $(itc).click(function() {
-            $('#todoinfoboxpanel button').removeClass('hidepanel')
+            $('#todoinfoboxpanel .mefuncbox, #todoinfoboxpanel button').removeClass('hidepanel')
             $('#tododetail').attr('rows', 2)
             let loop = {
                 leftlogo: 'angle-left',
@@ -307,7 +311,7 @@ function present_done_todo() {
             $('#todostarttime').val(dayjs(td.starttime).format('YYYY/MM/DD HH:mm'))
             $('#todofinishtime').val(dayjs(td.finishtime).format('YYYY/MM/DD HH:mm'))
             $('#tododetail').text(td.detail)
-            $('#todoinfoboxpanel button').addClass('hidepanel')
+            $('#todoinfoboxpanel .mefuncbox, #todoinfoboxpanel button').addClass('hidepanel')
             $('#tododetail').attr('rows', 4)
         })
     }
@@ -361,7 +365,7 @@ function present_undone_todo() {
             $('#todostarttime').val(dayjs(td.starttime).format('YYYY/MM/DD HH:mm'))
             $('#todofinishtime').val(dayjs(td.finishtime).format('YYYY/MM/DD HH:mm'))
             $('#tododetail').text(td.detail)
-            $('#todoinfoboxpanel button').addClass('hidepanel')
+            $('#todoinfoboxpanel .mefuncbox, #todoinfoboxpanel button').addClass('hidepanel')
             $('#tododetail').attr('rows', 4)
         })
     }
