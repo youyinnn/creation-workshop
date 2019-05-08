@@ -196,7 +196,6 @@ function new_todo(spanel, hpanel) {
 
 function new_idea(spanel, hpanel) {
     show_idea_info_box(spanel)
-    present_idea_all()
 
     $('#ideainfoboxpanel').addClass('hidepanel')
     $('#newideainfoboxpanel').removeClass('hidepanel')
@@ -221,6 +220,7 @@ function new_idea(spanel, hpanel) {
 
     $('#newideasubmit').unbind('click')
     $('#newideasubmit').click(function() {
+        present_idea_all()
         add_idea(
             $('#newideatitle').val(),
             $('#newideastarttime').datetimepicker('getValue').getTime(),
