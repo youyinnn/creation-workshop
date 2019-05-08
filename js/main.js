@@ -325,6 +325,23 @@ function show_head_btn_if_need(panel) {
     }
 }
 
+function show_file_box(panel) {
+    filebox.css('right', '0')
+    filebox.css('opacity', '1')
+    filebox.css('z-index', '3')
+    nowsubpanel.css('opacity', '0')
+    show_head_btn_if_need(panel)
+}
+
+function hide_hide_box(panel) {
+    filebox.css('right', '-100%')
+    filebox.css('opacity', '0')
+    filebox.css('z-index', '0')
+    nowsubpanel.css('opacity', '1')
+    reset_head_title()
+    show_head_btn_if_need(panel)
+}
+
 // login
 function show_login_form() {
     $('#loginbox').css('overflow', 'visible')
@@ -345,12 +362,12 @@ var f = false
 
 function just_login() {
     get_panel_up(mainpanel)
-    get_subpanel_up(chatsubpanel)
+    get_subpanel_up(ideasquaresubpanel)
 
     $('#chatbtn').click()
 
     reflesh_user_info()
-    fetch_chat_list()
+    present_idea_all()
     present_context()
     present_ing_todo()
     present_idea()
@@ -435,9 +452,8 @@ function need_right_function(logo, func) {
 }
 
 function change_head_title(newtitle) {
-    if (headtitle.text() !== newtitle) {
-        headtitle.animateCss('fadeIn')
-        headtitle.text(newtitle)
+    if (headtitlesearch.attr('placeholder') !== newtitle) {
+        headtitlesearch.attr('placeholder', newtitle)
     }
 }
 
@@ -521,7 +537,7 @@ function remove_idea_item(ts) {
 }
 
 function fetch_chat_list() {
-    $('#chatsubpanel').children().remove()
+    $('#ideasquaresubpanel').children().remove()
     let logs = sch('chatlogdb')
     for (let i = 0; i < logs.data.length; i++) {
         let log = logs.data[i]
@@ -620,7 +636,7 @@ function enable_todo_info_form() {
 }
 
 // group
-function show_group_info(gid, spanel, cpanel, hpanel) {
+function show_group_info(gid, spanel, cpanel) {
     show_group_info_box(spanel)
     let g = sch('gredb', gid)
     $('#gname').text(g.gname)
@@ -662,4 +678,8 @@ function show_hide_add_funcbtn() {
     } else {
         hide_panel_2(addfuncpanel)
     }
+}
+
+function show_file() {
+    
 }

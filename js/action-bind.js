@@ -10,7 +10,7 @@ $(function() {
         if (!$('#chatbtn').hasClass('active')) {
             hide_leftbtn()
             need_right_function('plus-square-o', show_hide_add_funcbtn)
-            get_subpanel_up(chatsubpanel)
+            get_subpanel_up(ideasquaresubpanel)
         }
     })
     $('#contextbtn').click(function() {
@@ -156,21 +156,21 @@ $(function() {
     // todo
     $('#ingbtn').click(function() {
         if ($('#ingbtn .cohide').length === 1) {
-            $('#todocatebox .co').addClass('cohide')
+            $('.todocatebox .co').addClass('cohide')
             $('#ingbtn .co').removeClass('cohide')
             present_ing_todo()
         }
     })
     $('#donebtn').click(function() {
         if ($('#donebtn .cohide').length === 1) {
-            $('#todocatebox .co').addClass('cohide')
+            $('.todocatebox .co').addClass('cohide')
             $('#donebtn .co').removeClass('cohide')
             present_done_todo()
         }
     })
     $('#undonebtn').click(function() {
         if ($('#undonebtn .cohide').length === 1) {
-            $('#todocatebox .co').addClass('cohide')
+            $('.todocatebox .co').addClass('cohide')
             $('#undonebtn .co').removeClass('cohide')
             present_undone_todo()
         }

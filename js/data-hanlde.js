@@ -255,6 +255,18 @@ function get_related_idea() {
     return rs
 }
 
+function get_all_idea() {
+    let db = sch('ideadb')
+    let rs = new Array()
+    for (let i = 0; i < db.data.length; i++) {
+        rs.push({
+            index: i,
+            idea: db.data[i].idea
+        })
+    }
+    return rs
+}
+
 function update_idea(ii, tt, st, dt, lg) {
     upd('ideadb', ii, {
         idea: {

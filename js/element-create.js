@@ -40,7 +40,7 @@ function chat_list_item(log) {
     appendc(clic, clih)
     appendc(clic, clib)
     appendc(cli, clif)
-    appendc($('#chatsubpanel')[0], cli)
+    appendc($('#ideasquaresubpanel')[0], cli)
 
     $(clif).click(function() {
         remove_chat_item(this)
@@ -144,17 +144,51 @@ function present_context() {
             $('#chatfbtn').unbind('click')
             $('#chatfbtn').click(function() {
                 hide_friend_info_box()
-                get_chat_log_up(u.nickname, 'u', u.id)
-                need_left_function('angle-left', function() {
-                    chatlogbox.css('right', '-100%')
-                    chatlogbox.css('opacity', '0')
-                    nowsubpanel.css('opacity', '1')
-                    hide_chat_box()
-                    show_friend_info_box({
-                        leftlogo: 'angle-left',
-                        leftfunc: hide_friend_info_box
-                    })
-                    reset_head_title()
+                let loop = {
+                    leftlogo: 'angle-left',
+                    leftfunc: function() {
+                        chatlogbox.css('right', '-100%')
+                        chatlogbox.css('opacity', '0')
+                        nowsubpanel.css('opacity', '1')
+                        hide_chat_box()
+                        show_friend_info_box({
+                            leftlogo: 'angle-left',
+                            leftfunc: hide_friend_info_box
+                        })
+                        reset_head_title()
+                    },
+                    rightlogo: 'archive',
+                    rightfunc: function() {
+                        show_file_box({
+                            leftlogo: 'angle-left',
+                            leftfunc: function() {
+                                hide_hide_box(loop)
+                            }
+                        })
+                    }
+                }
+                get_chat_log_up(u.nickname, 'u', u.id, {
+                    leftlogo: 'angle-left',
+                    leftfunc: function() {
+                        chatlogbox.css('right', '-100%')
+                        chatlogbox.css('opacity', '0')
+                        nowsubpanel.css('opacity', '1')
+                        hide_chat_box()
+                        show_friend_info_box({
+                            leftlogo: 'angle-left',
+                            leftfunc: hide_friend_info_box
+                        })
+                        reset_head_title()
+                    },
+                    rightlogo: 'archive',
+                    rightfunc: function() {
+                        show_file_box({
+                            leftlogo: 'angle-left',
+                            leftfunc: function() {
+                                hide_hide_box(loop)
+                            }
+                        })
+                    }
                 })
             })
         })
@@ -173,6 +207,24 @@ function present_context() {
         $(gi).click(function() {
             nowchatwith = 'g'
             nowchatid = gs[i].gid
+            let loop = {
+                leftlogo: 'angle-left',
+                leftfunc: function() {
+                    hide_chat_log_box({
+                        leftlogo: 'angle-left',
+                        leftfunc: hide_group_info_box
+                    })
+                },
+                rightlogo: 'archive',
+                rightfunc: function() {
+                    show_file_box({
+                        leftlogo: 'angle-left',
+                        leftfunc: function() {
+                            hide_hide_box(loop)
+                        }
+                    })
+                }
+            }
             show_group_info(gs[i].gid, {
                 leftlogo: 'angle-left',
                 leftfunc: hide_group_info_box
@@ -182,6 +234,15 @@ function present_context() {
                     hide_chat_log_box({
                         leftlogo: 'angle-left',
                         leftfunc: hide_group_info_box
+                    })
+                },
+                rightlogo: 'archive',
+                rightfunc: function() {
+                    show_file_box({
+                        leftlogo: 'angle-left',
+                        leftfunc: function() {
+                            hide_hide_box(loop)
+                        }
                     })
                 }
             })
@@ -472,4 +533,114 @@ function present_idea() {
             nowideaindex = i
         })
     }
+}
+
+function present_idea_all() {
+    ideasquarelist.children().remove()
+    let rs = get_all_idea()
+    for (let i = 0; i < rs.length; i++) {
+        let td = rs[i].idea
+        let it = c('div')
+        let itc = c('div')
+        let ihead = c('div')
+        let ibody = c('div')
+        let ifoot = c('div')
+
+        ihead.innerHTML = '<span>' + td.title + '</span>'
+        ibody.innerHTML = '<span>' + td.detail + '</span>'
+        ifoot.innerHTML = '<span> 参与小组' + td.linkedgroup.length + '个</span>'
+
+        adclass(it, 'chatlistitem clearfix')
+        adclass(itc, 'chatlistitemcontent')
+        adclass(ihead, 'chatlistitemhead')
+        adclass(ibody, 'chatlistitembody')
+        adclass(ifoot, 'chatlistitemfoot')
+
+        appendc(it, itc)
+        appendc(itc, ihead)
+        appendc(itc, ibody)
+        appendc(itc, ifoot)
+        appendc(ideasquarelist[0], it)
+
+        $(itc).click(function() {
+            $('#ideainfoboxpanel .infoupdbtn.btn.btn-dark').addClass('hidepanel')
+            $('#fake').removeClass('hidepanel')
+            let loop2 = {
+                rightlogo: 'plus-square-o',
+                rightfunc: show_hide_add_funcbtn
+            }
+            show_idea_info_box({
+                leftlogo: 'angle-left',
+                leftfunc: function() {
+                    $('#ideainfoboxpanel .infoupdbtn.btn.btn-dark').removeClass('hidepanel')
+                    $('#fake').addClass('hidepanel')
+                    hide_idea_info_box(loop2)
+                }
+            })
+            change_head_title('我的点子')
+            $('#ideatitle, #newideatitle').val(td.title)
+            $('#ideastarttime, #newideastarttime').val(dayjs(td.starttime).format('YYYY/MM/DD HH:mm'))
+            let ilbox = $('#ilbox')
+            let newilbox = $('#newilbox')
+            ilbox.children().remove()
+            newilbox.children().remove()
+            let g = td.linkedgroup
+            for (let j = 0; j < g.length; j++) {
+                let gn = c('span')
+                gn.innerText = sch('gredb', g[j]).gname
+                adclass(gn, 'badge badge-success m-1')
+                appendc(ilbox[0], gn)
+                let gn2 = c('span')
+                gn2.innerText = sch('gredb', g[j]).gname
+                adclass(gn2, 'badge badge-success m-1')
+                appendc(newilbox[0], gn2)
+                $(gn2).click(function() {
+                    $(gn2).remove()
+                })
+                $(gn).click(function() {
+                    nowchatwith = 'g'
+                    nowchatid = g[j]
+                    show_group_info(g[j], {
+                        leftlogo: 'angle-left',
+                        leftfunc: function() {
+                            hide_group_info_box({
+                                leftlogo: 'angle-left',
+                                leftfunc: function() {
+                                    hide_idea_info_box(loop2)
+                                }
+                            })
+                        }
+                    }, {
+                        leftlogo: 'angle-left',
+                        leftfunc: function() {
+                            hide_chat_log_box({
+                                leftlogo: 'angle-left',
+                                leftfunc: function() {
+                                    hide_group_info_box({
+                                        leftlogo: 'angle-left',
+                                        leftfunc: function() {
+                                            hide_idea_info_box(loop2)
+                                        }
+                                    })
+                                }
+                            })
+                        }
+                    })
+                })
+            }
+            $('#ideadetail, #newideadetail').val(td.detail)
+            nowideaindex = i
+        })
+    }
+}
+
+function present_file_list() {
+    //  <div class="fitem clearfix">
+    //     <div class="ftitle">
+    //         文档1.docx
+    //     </div>
+    //     <div class="fsize">
+    //         3.2MB
+    //     </div>
+    //  </div>
 }

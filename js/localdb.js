@@ -8,8 +8,7 @@
 
 var lcoaldb_usertb = {
     idkey: 2,
-    data: [
-        {
+    data: [{
             id: 0,
             username: 'xiaoma123',
             nickname: 'balancehorse',
@@ -37,10 +36,9 @@ var lcoaldb_usertb = {
 }
 
 var localdb_urelation = {
-    data :[
-        {
+    data: [{
             uid: 0,
-            fs: [1,2]
+            fs: [1, 2]
         },
         {
             uid: 1,
@@ -55,30 +53,63 @@ var localdb_urelation = {
 
 var localdb_grelation = {
     idkey: 2,
-    data: [
-        {
+    data: [{
             gid: 0,
             gname: 'walkingdead',
             gintro: '行尸走肉交流群',
-            mb: [0,1,2]
+            mb: [0, 1, 2]
         },
         {
             gid: 1,
             gname: 'twins',
             gintro: '双生子协会',
-            mb: [0,2]
+            mb: [0, 2]
+        },
+        {
+            gid: 2,
+            gname: 'Aka48',
+            gintro: 'AK48后院',
+            mb: [0, 2]
+        },
+        {
+            gid: 3,
+            gname: '战争前线',
+            gintro: '战争前线',
+            mb: [0, 2]
+        },
+        {
+            gid: 4,
+            gname: 'LOL5黑',
+            gintro: 'LOL5黑',
+            mb: [0, 2]
+        },
+        {
+            gid: 5,
+            gname: '王者荣耀大集会',
+            gintro: '王者荣耀大集会',
+            mb: [0, 2]
+        },
+        {
+            gid: 6,
+            gname: 'Bad Boy',
+            gintro: '坏小子',
+            mb: [0, 2]
+        },
+        {
+            gid: 7,
+            gname: '炸鸡翅小分队',
+            gintro: '炸鸡翅小分队',
+            mb: [0, 2]
         },
     ]
 }
 
 var localdb_chatlogtb = {
-    data: [
-        {
+    data: [{
             chatwith: 'u',
             aid: 0,
             bid: 1,
-            msglog: [
-                {
+            msglog: [{
                     time: 1556779603137,
                     msg: '你好，我是a',
                     from: 0,
@@ -102,9 +133,8 @@ var localdb_chatlogtb = {
         },
         {
             chatwith: 'g',
-            gid: 0, 
-            msglog: [
-                {
+            gid: 0,
+            msglog: [{
                     time: 1556780710837,
                     msg: '有人吗？',
                     from: 1
@@ -128,9 +158,8 @@ var localdb_chatlogtb = {
         },
         {
             chatwith: 'g',
-            gid: 1, 
-            msglog: [
-                {
+            gid: 1,
+            msglog: [{
                     time: 1556780711760,
                     msg: '那个人真搞笑',
                     from: 0
@@ -146,8 +175,7 @@ var localdb_chatlogtb = {
             chatwith: 'u',
             aid: 0,
             bid: 2,
-            msglog: [
-                {
+            msglog: [{
                     time: 1556780731953,
                     msg: '你好啊',
                     from: 0
@@ -173,11 +201,9 @@ var localdb_chatlogtb = {
 }
 
 var localdb_tododb = {
-    data: [
-        {
+    data: [{
             uid: 0,
-            todos: [
-                {
+            todos: [{
                     title: '英语作业1',
                     starttime: 1557006044009,
                     finishtime: 1557056544009,
@@ -219,14 +245,49 @@ var localdb_tododb = {
 }
 
 var localdb_ideadb = {
-    data: [
-        {
+    data: [{
             uid: 0,
             idea: {
                 title: '化学实验项目小组',
                 starttime: 1557006044009,
                 detail: '完成ABC化学实验',
                 linkedgroup: [0, 1]
+            }
+        },
+        {
+            uid: 2,
+            idea: {
+                title: '市场数据分析',
+                starttime: 1557006044009,
+                detail: 'Analysis the market data.',
+                linkedgroup: [0, 1, 2, 3]
+            }
+        },
+        {
+            uid: 1,
+            idea: {
+                title: '绝佳的五道口卫生管理办法',
+                starttime: 1557006044009,
+                detail: '五道口环境5周解决',
+                linkedgroup: [0, 1, 3]
+            }
+        },
+        {
+            uid: 1,
+            idea: {
+                title: '树莓派Kafka集群',
+                starttime: 1557006044009,
+                detail: '轻量级MM方案',
+                linkedgroup: [0, 1, 3]
+            }
+        },
+        {
+            uid: 1,
+            idea: {
+                title: '如何实现真正的云养猫',
+                starttime: 1557006044009,
+                detail: '让你拥有真正的云猫',
+                linkedgroup: [0, 1, 3, 5, 6, 7]
             }
         },
         {
@@ -241,7 +302,7 @@ var localdb_ideadb = {
     ]
 }
 
-$(function () {
+$(function() {
     if (localStorage['userdb'] === undefined) {
         localsave('userdb', lcoaldb_usertb)
     }

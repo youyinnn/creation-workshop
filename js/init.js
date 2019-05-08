@@ -5,10 +5,10 @@ var signinpanel = $('#signinpanel')
 var nowpanel = loginpanel
 
 // subpanel
-var chatsubpanel = $('#chatsubpanel')
+var ideasquaresubpanel = $('#ideasquaresubpanel')
 var contextsubpanel = $('#contextsubpanel')
 var mesubpanel = $('#mesubpanel')
-var nowsubpanel = chatsubpanel
+var nowsubpanel = ideasquaresubpanel
 
 mesubpanel.outfunc = function() {
     hide_todo_box()
@@ -40,7 +40,7 @@ var nowinfosubpanel = infosubpanel
 
 // bottom bar btn
 var chatbtn = $('#chatbtn')
-chatsubpanel.btn = chatbtn
+ideasquaresubpanel.btn = chatbtn
 var contextbtn = $('#contextbtn')
 contextsubpanel.btn = contextbtn
 var mebtn = $('#mebtn')
@@ -56,6 +56,7 @@ var chatlogbox = $('#chatlogbox')
 var leftbtn = $('#headleftbtn')
 var rightbtn = $('#headrightbtn')
 var headtitle = $('#headtitle')
+var headtitlesearch = $('#headtitlesearch')
 var headbar = $('#headbar')
 var leftbtnlogo
 var rightbtnlogo
@@ -78,8 +79,11 @@ var ideabox = $('#ideabox')
 var ideainfobox = $('#ideainfobox')
 var todolist = $('#todolist')
 var idealist = $('#idealist')
+var ideasquarelist = $('#ideasquarelist')
 var nowtodoindex
 var nowideaindex
+
+var filebox = $('#filebox')
 
 $(function() {
     // animations

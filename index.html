@@ -79,7 +79,14 @@
             <div id="headleftbtn" class="headbtn">
                 <i class="fa fa-angle-left functionbtn"></i>
             </div>
-            <span id="headtitle">创意工坊</span>
+            <div id="headtitle" class="form-inline">
+                <div class="form-group">
+                    <input type="text" class="form-control form-control-sm" id="headtitlesearch" placeholder="创意工坊">
+                </div>
+                <button type="button" class="btn btn-secondary ml-2 btn-sm">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                </button>
+            </div>
             <div id="headrightbtn" class="headbtn">
                 <i class="fa fa-plus-square-o functionbtn"></i>
             </div>
@@ -87,8 +94,24 @@
 
         <div id="container">
 
-            <div id="chatsubpanel" class="subpanel unselectable">
+            <div id="ideasquaresubpanel" class="subpanel unselectable">
+                <div class="todocatebox row unselectable">
+                    <div id="dayrank" class="col">
+                        <span class="align-middle">日活跃</span>
+                        <div class="co"></div>
+                    </div>
+                    <div id="monthrank" class="col">
+                        <span class="align-middle">月活跃</span>
+                        <div class="co cohide"></div>
+                    </div>
+                    <div id="totalrank" class="col">
+                        <span class="align-middle">总活跃</span>
+                        <div class="co cohide"></div>
+                    </div>
+                </div>
+                <div id="ideasquarelist">
 
+                </div>
             </div>
 
             <div id="contextsubpanel" class="subpanel unselectable hidepanel">
@@ -184,9 +207,9 @@
         <div id="bottombar">
             <div id="chatbtnbox" class="bottombarbtn">
                 <div id="chatbtn" class="bottombarbtnlogo functionbtn">
-                    <i class="fa fa-comments"></i>
+                    <i class="fa fa-star"></i>
                     <br>
-                    聊天
+                    点子广场
                 </div>
             </div>
             <div id="contectbtnbox" class="bottombarbtn">
@@ -250,7 +273,7 @@
             </form>
         </div>
         <div id="todobox">
-            <div id="todocatebox" class="row unselectable">
+            <div class="todocatebox row unselectable">
                 <div id="ingbtn" class="col">
                     <span class="align-middle">正在进行</span>
                     <div class="co"></div>
@@ -344,6 +367,10 @@
                     <textarea id="ideadetail" type="text" class="form-control form-control-sm" maxlength="160" rows="2" disabled></textarea>
                 </div>
                 <button type="button" class="infoupdbtn btn btn-sm btn-dark">修改</button>
+                <div id="fake" class="hidepanel infoupdbtn btn-group" role="group" aria-label="Basic example">
+                    <button id="fakereturn" type="button" class="btn btn-sm btn-secondary">不再显示</button>
+                    <button id="fakesubmit" type="button" class="btn btn-sm btn-primary">申请参与</button>
+                </div>
             </form>
             <form id="newideainfoboxpanel" class="subpanel unselectable hidepanel">
                 <h5>点子修改</h5>
@@ -380,6 +407,41 @@
         <div id="chatbox">
             <textarea id="chattext" type="text" class="form-control form-control-sm form-control form-control-sm-sm" rows="1"></textarea>
             <button id="chatsend" class="btn btn-sm btn-secondary " type="button">发送</button>
+        </div>
+
+        <div id="filebox">
+            <div class="fitem clearfix">
+                <div class="ftitle">
+                    文档1.docx
+                </div>
+                <div class="fsize">
+                    3.2MB
+                </div>
+            </div>
+            <div class="fitem clearfix">
+                <div class="ftitle">
+                    文档2.docx
+                </div>
+                <div class="fsize">
+                    953KB
+                </div>
+            </div>
+            <div class="fitem clearfix">
+                <div class="ftitle">
+                    文档3.docx
+                </div>
+                <div class="fsize">
+                    3.2MB
+                </div>
+            </div>
+            <div class="fitem clearfix">
+                <div class="ftitle">
+                    文档4.docx
+                </div>
+                <div class="fsize">
+                    3.2MB
+                </div>
+            </div>
         </div>
     </div>
 
