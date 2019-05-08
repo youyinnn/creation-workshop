@@ -196,6 +196,7 @@ function new_todo(spanel, hpanel) {
 
 function new_idea(spanel, hpanel) {
     show_idea_info_box(spanel)
+    present_idea_all()
 
     $('#ideainfoboxpanel').addClass('hidepanel')
     $('#newideainfoboxpanel').removeClass('hidepanel')
@@ -245,6 +246,7 @@ function new_idea(spanel, hpanel) {
             $('#ideadetail').val($('#newideadetail').val())
             $('#ilbox')[0].innerHTML = $('#newilbox')[0].innerHTML
             present_idea()
+            present_idea_all()
             setTimeout(() => {
                 $('#newideareturn').click()
             }, 400);
@@ -681,5 +683,5 @@ function show_hide_add_funcbtn() {
 }
 
 function show_file() {
-    
+
 }
