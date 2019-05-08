@@ -220,7 +220,6 @@ function new_idea(spanel, hpanel) {
 
     $('#newideasubmit').unbind('click')
     $('#newideasubmit').click(function() {
-        present_idea_all()
         add_idea(
             $('#newideatitle').val(),
             $('#newideastarttime').datetimepicker('getValue').getTime(),
@@ -228,6 +227,7 @@ function new_idea(spanel, hpanel) {
             get_addil_group_list()
         )
         present_idea()
+        present_idea_all()
         setTimeout(() => {
             $('#newideareturn').click()
         }, 400);
@@ -535,6 +535,7 @@ function remove_idea_item(ts) {
     }, 400);
     setTimeout(() => {
         p.remove()
+        present_idea_all()
     }, 800);
 }
 
