@@ -156,15 +156,6 @@ function present_context() {
                             leftfunc: hide_friend_info_box
                         })
                         reset_head_title()
-                    },
-                    rightlogo: 'archive',
-                    rightfunc: function() {
-                        show_file_box({
-                            leftlogo: 'angle-left',
-                            leftfunc: function() {
-                                hide_hide_box(loop)
-                            }
-                        })
                     }
                 }
                 get_chat_log_up(u.nickname, 'u', u.id, {
@@ -179,15 +170,6 @@ function present_context() {
                             leftfunc: hide_friend_info_box
                         })
                         reset_head_title()
-                    },
-                    rightlogo: 'archive',
-                    rightfunc: function() {
-                        show_file_box({
-                            leftlogo: 'angle-left',
-                            leftfunc: function() {
-                                hide_hide_box(loop)
-                            }
-                        })
                     }
                 })
             })

@@ -41,7 +41,7 @@ $(function() {
         if (rs >= 0) {
             localStorage.setItem('loginid', rs)
             loginid = rs + ''
-            popmsg('登陆成功', 500)
+            popmsg('登录成功', 500)
             disable_login_form()
             disable_signin_form()
             setTimeout(() => {

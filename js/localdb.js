@@ -11,7 +11,7 @@ var lcoaldb_usertb = {
     data: [{
             id: 0,
             username: 'xiaoma123',
-            nickname: 'balancehorse',
+            nickname: '小马',
             intro: 'xixi',
             password: '123456',
             email: 'xiaoma@gmail.com',
@@ -19,7 +19,7 @@ var lcoaldb_usertb = {
         {
             id: 1,
             username: 'xiaohong456',
-            nickname: 'honghonghuohuo',
+            nickname: '小红',
             intro: 'haha',
             password: '123456',
             email: 'xiaohong@gmail.com',
@@ -27,7 +27,7 @@ var lcoaldb_usertb = {
         {
             id: 2,
             username: 'xiaobai444',
-            nickname: 'baibaibai',
+            nickname: '小白',
             intro: 'heihei',
             password: '123456',
             email: 'xiaobai@gmail.com',
@@ -55,19 +55,19 @@ var localdb_grelation = {
     idkey: 2,
     data: [{
             gid: 0,
-            gname: 'walkingdead',
+            gname: '行尸走肉交流群',
             gintro: '行尸走肉交流群',
             mb: [0, 1, 2]
         },
         {
             gid: 1,
-            gname: 'twins',
+            gname: '双生子协会',
             gintro: '双生子协会',
             mb: [0, 2]
         },
         {
             gid: 2,
-            gname: 'Aka48',
+            gname: 'AK48后院',
             gintro: 'AK48后院',
             mb: [0, 2]
         },
@@ -204,33 +204,40 @@ var localdb_tododb = {
     data: [{
             uid: 0,
             todos: [{
-                    title: '英语作业1',
+                    title: '上传PRD文档',
                     starttime: 1557006044009,
                     finishtime: 1557056544009,
-                    detail: '做完练习1章',
+                    detail: '上传PRD文档待办细节',
                     finish: true
                 },
                 {
-                    title: '数学作业1',
+                    title: '项目“鱼骨图”初稿',
                     starttime: 1556996044009,
                     finishtime: 1557006044009,
-                    detail: '做完练习1章',
+                    detail: '项目“鱼骨图”初稿待办细节',
                     finish: false
                 },
                 {
-                    title: '英语作业',
+                    title: '修改第三版设计图',
                     starttime: 1557106044009,
                     finishtime: 1557206544009,
-                    detail: '做完练习1-3章',
+                    detail: '修改第三版设计图待办细节',
                     finish: false
                 },
                 {
-                    title: '数学作业',
+                    title: '添加“登录”和“注册”功能',
                     starttime: 1557106047368,
-                    finishtime: 1557306047368,
-                    detail: '做完练习9-15章',
+                    finishtime: 1557206047368,
+                    detail: '添加“登录”和“注册”功能待办细节',
                     finish: false
-                }
+                },
+                {
+                    title: '可交互原理',
+                    starttime: 1557336047368,
+                    finishtime: 1557906047368,
+                    detail: '可交互原理待办细节',
+                    finish: false
+                },
             ]
         },
         {
@@ -245,7 +252,62 @@ var localdb_tododb = {
 }
 
 var localdb_ideadb = {
-    data: [{
+    data: [
+        {
+            uid: 0,
+            idea: {
+                title: '解决软件开发中遇到的问题',
+                starttime: 1557006044009,
+                detail: '解决软件开发中遇到的问题点子细节',
+                linkedgroup: [0, 1]
+            }
+        },
+        {
+            uid: 0,
+            idea: {
+                title: '基于iOS平台的即时记账软件',
+                starttime: 1557006044009,
+                detail: '基于iOS平台的即时记账软件点子细节',
+                linkedgroup: [0, 1]
+            }
+        },
+        {
+            uid: 0,
+            idea: {
+                title: '老年人理疗平台',
+                starttime: 1557006044009,
+                detail: '老年人理疗平台点子细节',
+                linkedgroup: [0, 1]
+            }
+        },
+        {
+            uid: 0,
+            idea: {
+                title: '针对女性购物的平台——优美购',
+                starttime: 1557006044009,
+                detail: '针对女性购物的平台——优美购点子细节',
+                linkedgroup: [0, 1]
+            }
+        },
+        {
+            uid: 0,
+            idea: {
+                title: '基于Opentracing的跟踪监控系统',
+                starttime: 1557006044009,
+                detail: '基于Opentracing的跟踪监控系统点子细节',
+                linkedgroup: [0, 1]
+            }
+        },
+        {
+            uid: 0,
+            idea: {
+                title: '“黑昼”——昼夜交替解谜游戏',
+                starttime: 1557006044009,
+                detail: '“黑昼”——昼夜交替解谜游戏点子细节',
+                linkedgroup: [0, 1]
+            }
+        },
+        {
             uid: 0,
             idea: {
                 title: '化学实验项目小组',
